@@ -1,5 +1,31 @@
-p {
-	
+menu {
+	background-color: #dddddd;
+}
+
+div {
+	background-color: #bfd7ff;
+	font-family: Century Gothic;
+	border-style: solid;
+	border-width: 1%;
+}
+
+div.landscapes {
+	background-color: #bfd7ff;
+	border-style: solid;
+	border-width: 1%;
+	height: 30%;
+}
+
+div.street {
+	background-color: #bfd7ff;
+	border-style: solid;
+	height: 30%;
+}
+
+div.people {
+	background-color: #bfd7ff;
+	border-style: solid;
+	height: 30%;
 }
 
 footer {
