@@ -1,12 +1,59 @@
 menu {
 	background-color: #dddddd;
+	margin: 0%;
+	padding: 1%;
+	position: fixed;
 }
+a {
+	text-decoration: none;
+}
+
+body {
+	margin: 0%;
+}
+
 
 div {
 	background-color: #bfd7ff;
 	font-family: Century Gothic;
 	border-style: solid;
 	border-width: 1%;
+}
+
+div.menu {
+	border-style: none;
+	border-width: 0%;
+}
+
+div.landscapes_link {
+	height: 100%;
+	width: 20%;
+	float: left;
+
+}
+
+div.street_link {
+	height: 100%;
+	width: 20%;
+	float: left;
+}
+
+div.people_link {
+	height: 100%;
+	width: 20%;
+	float: left;
+}
+
+div.about_link {
+	height: 100%;
+	width: 20%;
+	float: left;
+}
+
+div.contact_link {
+	height: 100%;
+	width: 20%;
+	float: left;
 }
 
 div.landscapes {
@@ -29,5 +76,5 @@ div.people {
 }
 
 footer {
-	
+	background-color: #dddddd;
 }
