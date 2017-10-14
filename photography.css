@@ -1,11 +1,19 @@
 menu {
-	background-color: #dddddd;
+	height: 5%;
+	width: 100%;
 	margin: 0%;
-	padding: 1%;
+	padding: 0%;
 	position: fixed;
 }
+
+
 a {
 	text-decoration: none;
+	color: #FFFFFF;
+}
+
+a.heading {
+	color: #000000;
 }
 
 body {
@@ -14,67 +22,61 @@ body {
 
 
 div {
-	background-color: #bfd7ff;
+	background-color: #404040;
 	font-family: Century Gothic;
 	border-style: solid;
-	border-width: 1%;
+	border-width: 1px;
+	margin: 0%;
+}
+
+div.logo {
+	background-color: #ffffff;
 }
 
 div.menu {
+	background-color: #404040;
+	opacity: 0.95;
+	width: 100%;
+	height: 5%;
 	border-style: none;
-	border-width: 0%;
 }
 
-div.landscapes_link {
+div.menu_link {
 	height: 100%;
 	width: 20%;
 	float: left;
+	border-style: none;
+	text-align: center;
+	line-height: 250%;
 
-}
 
-div.street_link {
-	height: 100%;
-	width: 20%;
-	float: left;
-}
-
-div.people_link {
-	height: 100%;
-	width: 20%;
-	float: left;
-}
-
-div.about_link {
-	height: 100%;
-	width: 20%;
-	float: left;
-}
-
-div.contact_link {
-	height: 100%;
-	width: 20%;
-	float: left;
 }
 
 div.landscapes {
-	background-color: #bfd7ff;
+	background-color: #404040;
 	border-style: solid;
-	border-width: 1%;
-	height: 30%;
+	height: 4in;
+	width: 6in;
+	margin: 0in;
 }
 
 div.street {
-	background-color: #bfd7ff;
+	background-color: #404040;
 	border-style: solid;
-	height: 30%;
+	height: 4in;
+	width: 6in;
 }
 
 div.people {
-	background-color: #bfd7ff;
+	background-color: #404040;
 	border-style: solid;
-	height: 30%;
+	height: 4in;
+	width: 6in;
+
 }
 
 footer {
-	background-color: #dddddd;
+	margin-top: 5%;
+	background-color: #404040;
+	height: 20%;
 }
