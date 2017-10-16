@@ -1,18 +1,38 @@
 menu {
-	height: 5%;
+	background-color: #ffffff;
+	opacity: 0.95;
 	width: 100%;
+	height: 5%;
+	border-style: none;
 	margin: 0%;
 	padding: 0%;
 	position: fixed;
+	z-index: 1;
 }
 
+h1 {
+	margin-bottom: 5px;
+
+}
+
+h3 {
+	margin-top: 5px;
+}
 
 a {
 	text-decoration: none;
-	color: #FFFFFF;
+	color: #000000;
 }
 
 a.heading {
+	color: #404040;
+}
+
+a:hover {
+	color: #ffffff;
+}
+
+a.heading:hover {
 	color: #000000;
 }
 
@@ -20,9 +40,8 @@ body {
 	margin: 0%;
 }
 
-
 div {
-	background-color: #404040;
+	background-color: #BFBFBF;
 	font-family: Century Gothic;
 	border-style: solid;
 	border-width: 1px;
@@ -31,52 +50,79 @@ div {
 
 div.logo {
 	background-color: #ffffff;
+	position: relative;
+	height: 10%;
+	width: 100%;
+	top: 8%;
+	z-index: 0;
+	border-style: none;
+	font-size: 20px;
 }
 
 div.menu {
-	background-color: #404040;
+	background-color: #BFBFBF;
 	opacity: 0.95;
-	width: 100%;
-	height: 5%;
-	border-style: none;
-}
-
-div.menu_link {
 	height: 100%;
-	width: 20%;
+	width: 16.666%;
 	float: left;
 	border-style: none;
 	text-align: center;
 	line-height: 250%;
+}
 
+div.menu:hover {
+	background-color: #404040;
 
 }
 
 div.landscapes {
-	background-color: #404040;
-	border-style: solid;
-	height: 4in;
-	width: 6in;
-	margin: 0in;
+	background-color: #BFBFBF;
+	border-style: none;
+	height: 40%;
+	width: 50%;
+
+	position: relative;
+	top: 10%;
+	margin: 0%;
+
 }
 
 div.street {
-	background-color: #404040;
-	border-style: solid;
-	height: 4in;
-	width: 6in;
+	background-color: #BFBFBF;
+	border-style: none;
+	height: 40%;
+	width: 50%;
+	float:right;
+	position: relative;
+	bottom: 30%;
+	margin: 0%;
 }
 
 div.people {
-	background-color: #404040;
-	border-style: solid;
-	height: 4in;
-	width: 6in;
+	background-color: #BFBFBF;
+	border-style: none;
+	height: 40%;
+	width: 50%;
+	position: relative;
+	top: 10%;
+	margin: 0%;
+
+}
+
+div.about {
+	background-color: #BFBFBF;
+	border-style: none;
+	height: 40%;
+	width: 50%;
+	float:right;
+	position: relative;
+	bottom:30%;
+	margin: 0%;
 
 }
 
 footer {
-	margin-top: 5%;
-	background-color: #404040;
-	height: 20%;
+	margin-top: 10%;
+	background-color: #BFBFBF;
+	height: 5%;
 }
