@@ -16,13 +16,20 @@ body {
 
 a {
 	text-decoration: none;
-	color: #ffffff;
+	color: #000000;
 }
 
 a:hover {
-	color: #BFBFBF;
+	color: #ffffff;
 }
 
+a.heading {
+	color: #ffffff;
+}
+
+a.heading:hover {
+	color: #BFBFBF;
+}
 
 div {
 	background-color: #BFBFBF;
@@ -60,5 +67,5 @@ div.logo {
 	line-height: 200%;
 	overflow: hidden;
 	background-image: url("people/Grand Central.jpg");
-	background-position: 60% 60%;
+	background-position: 80% 60%;
 }

@@ -121,6 +121,14 @@ div.about {
 
 }
 
+div.button {
+	background-color: #ffffff;
+	text-align: center;
+	line-height: 200%;
+	height: 10%;
+	width: 25%;
+}
+
 footer {
 	margin-top: 10%;
 	background-color: #BFBFBF;

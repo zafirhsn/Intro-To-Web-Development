@@ -16,10 +16,18 @@ body {
 
 a {
 	text-decoration: none;
-	color: #ffffff;
+	color: #000000;
 }
 
 a:hover {
+	color: #ffffff;
+}
+
+a.heading {
+	color: #ffffff;
+}
+
+a.heading:hover {
 	color: #BFBFBF;
 }
 
