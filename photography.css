@@ -76,14 +76,17 @@ div.menu:hover {
 }
 
 div.landscapes {
-	background-color: #BFBFBF;
+	background-color: #ffffff;
 	border-style: none;
 	height: 40%;
 	width: 50%;
-
 	position: relative;
 	top: 10%;
 	margin: 0%;
+	overflow: hidden;
+	background-image: url("landscapes/triboro.jpg");
+	background-position: 50% 20%;
+	opacity: 0.8;
 
 }
 
@@ -127,6 +130,10 @@ div.button {
 	line-height: 200%;
 	height: 10%;
 	width: 25%;
+}
+
+div.button:hover {
+	background-color: #404040;
 }
 
 footer {
