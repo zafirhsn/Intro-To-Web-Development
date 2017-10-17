@@ -164,7 +164,10 @@ footer {
 	top: 10%;
 }
 
+
+
 .flickr {
+	display: block;
 	background-image: url(flickr.jpg);
 	background-size: 100%;
 	margin: auto;
@@ -177,7 +180,7 @@ footer {
 }
 
 .flickr:hover {
-	opacity:1;
+	opacity: 1;
 }
 
 html {
