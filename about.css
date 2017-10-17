@@ -83,6 +83,7 @@ div.text {
 	background-color: #BFBFBF;
 	line-height: 200%;
 	font-size: 125%;
+	font-weight: bold;
 	padding: 2%;
 	width: 400px;
 	height: 500px;
@@ -91,4 +92,10 @@ div.text {
 	bottom: 63%;
 }
 
+.img {
+	margin-top: 2%;
+	margin-left: 0%;
+	height: 400px;
+	width: 600px;
+}
 

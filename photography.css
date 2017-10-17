@@ -79,7 +79,7 @@ div.menu:hover {
 div.landscapes {
 	background-color: #ffffff;
 	border-style: none;
-	height: 40%;
+	height: 45%;
 	width: 50%;
 	position: relative;
 	top: 10%;
@@ -111,11 +111,11 @@ a.button:hover {
 div.street {
 	background-color: #ffffff;
 	border-style: none;
-	height: 40%;
+	height: 45%;
 	width: 50%;
 	float:right;
 	position: relative;
-	bottom: 30%;
+	bottom: 35%;
 	margin: 0%;
 	background-image: url("street/fulton.jpg");
 	background-size: 100%;
@@ -125,7 +125,7 @@ div.street {
 div.people {
 	background-color: #BFBFBF;
 	border-style: none;
-	height: 40%;
+	height: 45%;
 	width: 50%;
 	position: relative;
 	top: 10%;
@@ -139,11 +139,11 @@ div.people {
 div.about {
 	background-color: #BFBFBF;
 	border-style: none;
-	height: 40%;
+	height: 45%;
 	width: 50%;
 	float:right;
 	position: relative;
-	bottom:30%;
+	bottom:35%;
 	margin: 0%;
 	background-image: url("about.jpg");
 	background-size: 100%;
