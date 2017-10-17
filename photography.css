@@ -21,6 +21,7 @@ h3 {
 
 a {
 	text-decoration: none;
+	margin: 0%;
 	color: #000000;
 }
 
@@ -83,15 +84,32 @@ div.landscapes {
 	position: relative;
 	top: 10%;
 	margin: 0%;
-	overflow: hidden;
-	background-image: url("landscapes/triboro.jpg");
-	background-position: 50% 20%;
-	opacity: 0.8;
+	background-image: url("landscapes/hudson.jpg");
+	background-size: 100%;
+	opacity: 0.9;
 
 }
 
+a.button {
+	background-color: #ffffff;
+	text-align: center;
+	line-height: 200%;
+	border-style: solid;
+	border-width: 2px;
+	padding: 2% 3% 2% 3%;
+	position: relative;
+	top: 80%;
+	left: 5%;
+}
+
+a.button:hover {
+	background-color: #404040;
+}
+
+
+
 div.street {
-	background-color: #BFBFBF;
+	background-color: #ffffff;
 	border-style: none;
 	height: 40%;
 	width: 50%;
@@ -99,6 +117,9 @@ div.street {
 	position: relative;
 	bottom: 30%;
 	margin: 0%;
+	background-image: url("street/fulton.jpg");
+	background-size: 100%;
+	opacity: 0.9;
 }
 
 div.people {
@@ -109,6 +130,9 @@ div.people {
 	position: relative;
 	top: 10%;
 	margin: 0%;
+	background-image: url("people/grand.jpg");
+	background-size: 100%;
+	opacity: 0.9;
 
 }
 
@@ -121,15 +145,10 @@ div.about {
 	position: relative;
 	bottom:30%;
 	margin: 0%;
+	background-image: url("about.jpg");
+	background-size: 100%;
+	opacity: 0.9;
 
-}
-
-div.button {
-	background-color: #ffffff;
-	text-align: center;
-	line-height: 200%;
-	height: 10%;
-	width: 25%;
 }
 
 div.button:hover {
@@ -137,7 +156,12 @@ div.button:hover {
 }
 
 footer {
-	margin-top: 10%;
 	background-color: #BFBFBF;
-	height: 5%;
+	height: 10%;
+	width: 100%;
+	margin: 0px;
+}
+
+html {
+	max-height: 1100px;
 }
