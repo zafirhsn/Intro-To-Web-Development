@@ -80,22 +80,17 @@ img {
 }
 
 div.text {
+	display: block;
 	background-color: #BFBFBF;
 	line-height: 200%;
 	font-size: 125%;
-	font-weight: bold;
-	padding: 2%;
-	width: 400px;
-	height: 500px;
+	padding: 30px;
+	max-width: 340px;
+	max-height: 540px;
+	height: auto;
+	width: auto;
 	position: relative;
 	left: 50%;
-	bottom: 63%;
-}
-
-.img {
-	margin-top: 2%;
-	margin-left: 0%;
-	height: 400px;
-	width: 600px;
+	bottom: 66%;
 }
 

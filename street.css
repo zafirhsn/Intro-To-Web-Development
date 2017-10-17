@@ -39,6 +39,15 @@ div {
 	margin: 0%;
 }
 
+div.back {
+	background-color: #ffffff;
+	margin:auto;
+	height: auto;
+	width: 80%;
+	border-style: solid;
+	border-width: 2px;
+}
+
 div.menu {
 	background-color: #BFBFBF;
 	opacity: 0.95;
@@ -71,17 +80,19 @@ div.logo {
 }
 
 .imgleft {
-	margin-top: 0%;
-	margin-left: 2%;
-	margin-right: 0%;
-	height: 533.33px;
-	width: 800px;
+	display: block;
+	margin: auto;
+	max-height: 800px;
+	max-width: 1200px;
+	width: auto;
+	height: auto;
 }
 
 .imgright {
-	margin-top: 0%;
-	margin-left: 0%;
-	margin-right: 0%;
-	height: 533.33px;
-	width: 800px;
+	display: block;
+	margin: auto;
+	max-height: 800px;
+	max-width: 1200px;
+	width: auto;
+	height: auto;
 }
