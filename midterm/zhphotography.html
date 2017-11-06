@@ -2,10 +2,31 @@
 <head>
 	<title> Zafir Hasan | Photography </title>
 	<link href="photography.css" rel="stylesheet" type="text/css">
-	
-</head>
+	<script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var landscapeArray = 
+				["url('landscapes/triboro.jpg')", "url('landscapes/hudson.jpg')", "url('landscapes/astoria.jpg')"];
 
-<body style="font-family: Century Gothic;">
+			var streetArray = ["url('street/corgi.jpg')", "url('street/bridge.jpg')", "url('street/building.jpg')", "url('street/fulton.jpg')", "url('street/light_trail.jpg')", "url('street/met.jpg')", "url('street/freedom2.jpg')"];
+
+			var peopleArray = ["url('people/grand.jpg')", "url('people/Grand Central.jpg')", "url('people/phones.jpg')"];
+
+		
+			var landscapePic = $(".landscapes")[0];
+			var streetPic = $(".street")[0];
+			var peoplePic = $(".people")[0];
+
+			landscapePic.style.backgroundImage = landscapeArray[(Math.round(Math.random() * 2))];
+
+			streetPic.style.backgroundImage = streetArray[Math.round(Math.random() * 6)];
+
+			peoplePic.style.backgroundImage = peopleArray[Math.round(Math.random() * 2)];
+		});
+
+	</script> 
+</head>
+<body>
 	<menu>
 
 		<a href="zhphotography.html">
@@ -58,29 +79,7 @@
 	
 	
 	
-	<script type="text/javascript">
-		var landscapeArray = 
-			["url('landscapes/triboro.jpg')", "url('landscapes/hudson.jpg')", "url('landscapes/astoria.jpg')"];
-		
-		var streetArray = ["url('street/corgi.jpg')", "url('street/bridge.jpg')", "url('street/building.jpg')", "url('street/fulton.jpg')", "url('street/light_trail.jpg')", "url('street/met.jpg')", "url('street/freedom2.jpg')"];
-		
-		var peopleArray = ["url('people/grand.jpg')", "url('people/Grand Central.jpg')", "url('people/phones.jpg')"];
-		
-		var landscapePic = document.getElementsByClassName("landscapes")[0];
-		var streetPic = document.getElementsByClassName("street")[0];
-		var peoplePic = document.getElementsByClassName("people")[0];
-
-//		console.log((Math.round(Math.random() * 2)));
-		landscapePic.style.backgroundImage = landscapeArray[(Math.round(Math.random() * 2))];
-		
-		streetPic.style.backgroundImage = streetArray[Math.round(Math.random() * 6)];
-		
-		peoplePic.style.backgroundImage = peopleArray[Math.round(Math.random() * 2)];
-
-		
-		
-		
-	</script> 
+	
 
 </body>
 
