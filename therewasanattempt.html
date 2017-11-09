@@ -3,21 +3,75 @@
 <head>
 <meta charset="utf-8">
 <title>therewasanattempt</title>
-<style>
-		
-	
+	<style>
+		div {
+			background-color: #b0b0b0;
+			width: 80%;
+			height: 80%;
+			margin: auto;
+			padding: 5%;
+		}
 
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0%;
+		}
+
+		html {
+			height: 100%;
+			width: 100%;
+		}
+
+		form {
+			position: relative;
+			margin: auto;
+			top: 80%;
+		}		
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+			//My basic idea was to have the user select a city from the HTML form then take their response and create a GET HTTP to a weather API. Then, I parse the JSON file for the weather like "sunny" or "cloudy" etc. I then update the HTML and upload a picture of the corresponding weather. I know we haven't focused on the backend stuff in this class, but I was interested in GET requests and JSON files. This was much harder than I thought and I didn't get past receiving the JSON file and the html form data as a string. I didn't figure out how to parse either.
+
+
+			function submitWeather() {
+				var input = $("form").serialize();
+
+				//Need to parse the string for the city name and add it on to URL 
+				//of GET request to weather API
+			}
 	
-</style>
+			var weatherJSON = $.get("http://api.wunderground.com/api/82b6cd80a08334b5/conditions/q/MA/Boston.json", "json");
+
+			//Now I need to parse the JSON file for the weather value
+			//No idea how to do this
+			//Once I get the weather value, use if statements to determine what picture to upload to site
+
+
+			console.log(weatherJSON.getResponseHeader);
+			console.log(weatherJSON);
+
+
+
+
+	</script>
 </head>
+<body>
 <h1><center>It's my weather and I want it now!</center></h1>
-<form action="weather.py">
-	<input type="text" name="city">
+<div>
+<form>
+	<select name="city">
+		<option value="CA/San_Francisco">San Francisco</option>
+		<option value="MA/Boston">Boston</option>
+		<option value="NY/New_York">New York</option>
 	<br>
 	<br>
-	<input type="submit" name="submit_city">
+	<input type="submit" name="submit_city" onclick="submitWeather()">
+	<br>
+	<p> Hello <p>
 	
 </form>
-<body>
+</div>
 </body>
 </html>
