@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Hello, world!</title>
+    <title>Spotify Analytics</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,38 +10,75 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
     <style type="text/css">
-    	div.container-fluid {
+    	div.container-fluid, nav {
     		background-color: #5B00BA;
     		color: #FFFFFF;
 			font-size: 20px;
-			font-weight: 200;
+			font-weight: 300;
 			
     	}
 		
 		body {
-/*			background-color: #000000;*/
+			/*background-color: #000000;*/
+            background-image: url("purple-black.gif");
 		}
+
+        li.nav-item:hover {
+            color: #000000;
+        }
 
 
     </style>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #222;">
+      <a class="navbar-brand" href="#">Spotify Analytics</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Today's Music</a>
+          </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Your Music</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 	
-    <div class="container-fluid">
+
+
+
+
+
+ <!--    <div class="container-fluid">
     	<div class="row">
-    		<div class="col-sm">
-    			One of three columns
+            <div class="col-sm-1">
+                Logo
+            </div>
+    		<div class="col-sm-3">
+    			Home
     		</div>
-	    	<div class="col-sm"> 
-	    		One of three columns
+	    	<div class="col-sm-3"> 
+	    		Today's Music
 	    	</div>
-	    	<div clas="col-sm">
-	    		One of three columns
+	    	<div class="col-sm-3">
+	    		Your Music
 	    	</div>
+            <div class="col-sm-3">
+                Your Music
+            </div>
 	    </div>
 	</div>
 
-
+ -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
