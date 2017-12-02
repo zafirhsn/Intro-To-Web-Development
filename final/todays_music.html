@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
     <style type="text/css">
-    	div.container-fluid {
+    	div.container-fluid, nav {
     		background-color: #5B00BA;
     		color: #FFFFFF;
 			font-size: 20px;
@@ -19,14 +19,41 @@
     	}
 		
 		body {
-			background-color: #000000;
+			 background-image: url("purple-violet.png");
 		}
 
 
     </style>
   </head>
   <body>
-	
+   	
+    	<!--Standard bootsstrap nav-->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #222;">
+      
+		<!--Logo/Brand link on left side of screen-->
+      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
+      
+		<!-- Hamburger button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<!-- Hamburger icon -->
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+		<!--Expanded navbar-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="todays_music.html">Today's Music</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="your_music.html">Your Music</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

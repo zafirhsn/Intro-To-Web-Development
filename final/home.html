@@ -20,7 +20,8 @@
 		
 		body {
 			/*background-color: #000000;*/
-            background-image: url("purple-black.gif");
+            background-image: url("purple-orange.png");
+			
 		}
 
         li.nav-item:hover {
@@ -31,23 +32,29 @@
     </style>
   </head>
   <body>
+	<!--Standard bootsstrap nav-->
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #222;">
-      <a class="navbar-brand" href="#">Spotify Analytics</a>
+      
+		<!--Logo/Brand link on left side of screen-->
+      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
+      
+		<!-- Hamburger button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<!-- Hamburger icon -->
         <span class="navbar-toggler-icon"></span>
       </button>
 
+		<!--Expanded navbar-->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Today's Music</a>
-          </li>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Your Music</a>
+            <a class="nav-link" href="todays_music.html">Today's Music</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="your_music.html">Your Music</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
           </li>
         </ul>
       </div>
