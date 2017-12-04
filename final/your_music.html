@@ -78,15 +78,26 @@
 	</div>   	
 
 	</div>
+
+	<script id="test-template" type="text/x-handlebars-template">
+    	<h1>This is a test template. Your top song is {{items.0.name}}</h1>
+    </script>
 	
+	<div id="test">Hello</div>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="data.js"></script>
+
+
     <script>
-		
-		
 		$(document).ready(function() {
 			var access_token = sessionStorage.getItem('access_token');
+			var testTemplate = $("#test-template").html();
+			console.log(testTemplate);
+
+			var template = Handlebars.compile(testTemplate);
+			console.log("PRINTING compiled template object");
+			console.log(template);
 			
 			function getTopTracks(access_token) {
 				$.ajax({
@@ -104,12 +115,12 @@
 						  
 					  }
 					  $(".top_tracks").html(top_tracks);
+					  $("#test").html(template(response));
 					}
 				});
 			}
 			
 			getTopTracks(access_token);
-		
 		});
 		
 	  
