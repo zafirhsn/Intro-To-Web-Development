@@ -67,16 +67,58 @@
 		<div class="col">
 			<p>Find out your most played tracks, artists, genres and more with this these visualization created from your library</p>
 		</div>
-
+		<div class="row">
+			<div class="col">
+				<ul class="top_tracks">
+					
+				</ul>
+			</div>
+		</div>
+		
 	</div>   	
 
 	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="data.js"></script>
+    <script>
+		
+		
+		$(document).ready(function() {
+			var access_token = sessionStorage.getItem('access_token');
+			
+			function getTopTracks(access_token) {
+				$.ajax({
+					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10&offset=0',
+					headers: {
+					  'Authorization': 'Bearer ' + access_token
+					},
+					success: function(response) {
+					  console.log("PRINTING response from top tracks");
+					  console.log(response);
+					  var top_tracks = "";
+					  for(var i = 0; i < 10; i++) {
+						  console.log(response.items[i].name);
+						  top_tracks += "<li>" + response.items[i].name + "</li>" 
+						  
+					  }
+					  $(".top_tracks").html(top_tracks);
+					}
+				});
+			}
+			
+			getTopTracks(access_token);
+		
+		});
+		
+	  
+	</script>
  
     
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </body>

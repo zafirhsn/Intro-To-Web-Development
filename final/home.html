@@ -111,6 +111,7 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     
     <script>
       $(document).ready(function() {
         console.log("In beginning of function");
@@ -162,7 +163,11 @@
         console.log(storedState);
         console.log("PRINTING localStorage");
         console.log(localStorage.getItem(stateKey));
-
+		  
+		console.log("PRINTING sessionStorage");
+		sessionStorage.setItem("access_token", access_token);
+		console.log(sessionStorage.getItem("access_token"));
+					
         if (access_token && (state == null || state !== storedState)) {
           alert('There was an error during the authentication');
         } 
@@ -170,15 +175,16 @@
           localStorage.removeItem(stateKey);
           if (access_token) {
             $.ajax({
-                url: 'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=5',
+                url: 'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0',
                 headers: {
                   'Authorization': 'Bearer ' + access_token
                 },
                 success: function(response) {
                   console.log("PRINTING response from top tracks");
                   console.log(response);
-                  $(".test-data").html("Your top track from the last 6 months is " + response.items[0].name);
-                  console.log(response.items[0].name);
+				  for(var i = 0; i < 10; i++) {
+                  	console.log(response.items[i].name);
+				  }
 
 
                   $('#login').hide();
