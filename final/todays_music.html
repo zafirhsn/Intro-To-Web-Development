@@ -11,10 +11,8 @@
 
     <style type="text/css">
     	div.container-fluid, nav {
-    		background-color: #5B00BA;
-    		color: #FFFFFF;
 			font-size: 20px;
-			font-weight: 200;
+			font-weight: 400;
 			
     	}
 		
@@ -27,22 +25,26 @@
   </head>
   <body>
    	
-    	<!--Standard bootsstrap nav-->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #222;">
+ 	
+   	<!--Standard bootsstrap nav-->
+    <nav class="p-3 navbar navbar-expand-sm navbar-dark" style="background-color: #222;">
       
-		<!--Logo/Brand link on left side of screen-->
-      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
-      
-		<!-- Hamburger button -->
+      <!-- Hamburger button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<!-- Hamburger icon -->
         <span class="navbar-toggler-icon"></span>
       </button>
+      
+		<!--Logo/Brand link on right side of screen-->
+      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
 
 		<!--Expanded navbar-->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+         <li class="nav-item"> 
+         	<a class="nav-link" href="home.html">Home</a>
+         </li>
+          <li class="nav-item active">
             <a class="nav-link" href="todays_music.html">Today's Music</a>
           </li>
           <li class="nav-item">
@@ -54,7 +56,24 @@
         </ul>
       </div>
     </nav>
-
+    
+    <div class="container" style="background-color: antiquewhite">
+    	<div class="row">
+    		<div class="col">
+				<p class="lead">Today's Music</p>
+    		</div>
+    		
+    	</div>
+     	<div class="row">
+    		<div class="col">
+				<p>Here are some stats on the songs topping global charts right now, taken from the Global Top 50 playlist</p>
+    		</div>
+    		
+    	</div>   	
+    	
+    </div>
+    
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

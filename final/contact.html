@@ -11,10 +11,8 @@
 
     <style type="text/css">
     	div.container-fluid, nav {
-    		background-color: #5B00BA;
-    		color: #FFFFFF;
 			font-size: 20px;
-			font-weight: 200;
+			font-weight: 400;
 			
     	}
 		
@@ -27,28 +25,32 @@
   </head>
   <body>
 	
-    	<!--Standard bootsstrap nav-->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #222;">
+  	
+   	<!--Standard bootsstrap nav-->
+    <nav class="p-3 navbar navbar-expand-sm navbar-dark" style="background-color: #222;">
       
-		<!--Logo/Brand link on left side of screen-->
-      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
-      
-		<!-- Hamburger button -->
+      <!-- Hamburger button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<!-- Hamburger icon -->
         <span class="navbar-toggler-icon"></span>
       </button>
+      
+		<!--Logo/Brand link on right side of screen-->
+      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
 
 		<!--Expanded navbar-->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+         <li class="nav-item"> 
+         	<a class="nav-link" href="home.html">Home</a>
+         </li>
           <li class="nav-item">
             <a class="nav-link" href="todays_music.html">Today's Music</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="your_music.html">Your Music</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="contact.html">Contact</a>
           </li>
         </ul>

@@ -11,10 +11,8 @@
 
     <style type="text/css">
     	div.container-fluid, nav {
-    		background-color: #5B00BA;
-    		color: #FFFFFF;
 			font-size: 20px;
-			font-weight: 300;
+			font-weight: 400;
 			
     	}
 		
@@ -25,28 +23,39 @@
 		}
 
         li.nav-item:hover {
-            color: #000000;
+/*            background-color: #FFF !important;*/
         }
-
+		
+		.nav-link:hover {
+/*			color:#5B00BA !important;*/
+		}
+		
+		.home-title {
+			font-size: 50px !important;
+		}
+					
 
     </style>
   </head>
   <body>
 	<!--Standard bootsstrap nav-->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #222;">
+    <nav class="p-3 navbar navbar-expand-sm navbar-dark" style="background-color: #222;">
       
-		<!--Logo/Brand link on left side of screen-->
-      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
-      
-		<!-- Hamburger button -->
+      <!-- Hamburger button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<!-- Hamburger icon -->
         <span class="navbar-toggler-icon"></span>
       </button>
+      
+		<!--Logo/Brand link on right side of screen-->
+      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
 
 		<!--Expanded navbar-->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+         <li class="nav-item active"> 
+         	<a class="nav-link" href="home.html">Home</a>
+         </li>
           <li class="nav-item">
             <a class="nav-link" href="todays_music.html">Today's Music</a>
           </li>
@@ -59,15 +68,49 @@
         </ul>
       </div>
     </nav>
-    
-    <div class="test-data">Hello</div>
+ 
+   
     <div class="container">
-    	<h1>Connect to your spotify account</h1>
-        <button id="login-button" class="btn btn-primary">Log in with Spotify</button>	
-    </div>
+      <div class="row" style="background-color: aliceblue">
+      	<div class="col home-title">
+			<p>Welcome to Spotify Analytics</p>
+		</div>
+	  </div>
+     
+      <div class="row" style="background-color: aqua">
+      	<div class="col">
+       		<p>Spotify Analytics uses Spotify's web API to visualize data for today's top public playlists and all your user statistics </p>
+		</div>
+	  </div>
+     
+      <div class="row" style="background-color: aliceblue">
+      	<div class="col">	   
+	   		<p> Connect your Spotify account to</p>
+			<ul> 
+				<li>Compare artists in the Global Top 50 playlist</li>
+				<li>Compare </li>
+				<li>Check out your top tracks and artists</li>
+				<li>Sort your music library for various song attributes like
+					<ul>
+						<li>Danceabilty</li>
+						<li>Valence</li>
+						<li>Tempo</li>
+						<li>And more...</li>	
+       		   				</ul>	
+       		   			</li>	
+       		   		</ul>
+	  </div>
+	  </div>
+       
+       <div class="row">
+       	<div class ="col">
+        	<button id="login-button" class="btn btn-primary">Log in with Spotify</button>	
+	  	</div>
+	   </div>
+	  </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
       $(document).ready(function() {
         console.log("In beginning of function");
@@ -150,7 +193,7 @@
           document.getElementById('login-button').addEventListener('click', function() {
 
             var client_id = 'd4557495633b429a85292698a89e5978'; // Your client id
-            var redirect_uri = 'http://localhost:8888'; // Your redirect uri
+            var redirect_uri = 'http://sites.bxmc.poly.edu/~zafirhasan/final/home.html'; // Your redirect uri
             var state = generateRandomString(16);
             localStorage.setItem(stateKey, state);
             var scope = 'user-read-private user-read-email user-top-read';
