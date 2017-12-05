@@ -31,7 +31,16 @@
 		}
 		
 		.home-title {
-			font-size: 50px !important;
+			font-size: 70px;
+			margin-top: 5%;
+		}
+		
+		.home-descrip {
+			font-size: 40px;
+		}
+		
+		.home-list {
+			font-size: 20px;
 		}
 					
 
@@ -71,25 +80,25 @@
  
    
     <div class="container">
-      <div class="row" style="background-color: aliceblue">
-      	<div class="col home-title">
+      <div class="row">
+      	<div class="col home-title" align="center">
 			<p>Welcome to Spotify Analytics</p>
 		</div>
 	  </div>
      
-      <div class="row" style="background-color: aqua">
-      	<div class="col">
-       		<p>Spotify Analytics uses Spotify's web API to visualize data for today's top public playlists and all your user statistics </p>
+      <div class="row">
+      	<div class="col home-descrip" align="center">
+       		<p>This site uses Spotify's web API to visualize data for popular playlists, songs, and your own user statistics <br><br> 
+       		Connect your Spotify Account to</p>
 		</div>
-	  </div>
-     
-      <div class="row" style="background-color: aliceblue">
-      	<div class="col">	   
-	   		<p> Connect your Spotify account to</p>
+	  </div> 
+      <div class="row">
+      	<div class="col home-list">	   
 			<ul> 
-				<li>Compare artists in the Global Top 50 playlist</li>
+				<li>Compare attributes of songs on the Global Top 50 playlist</li>
 				<li>Compare </li>
-				<li>Check out your top tracks and artists</li>
+				<li>Check out your top tracks and artists from the last 4 weeks, 6 months, or of all time</li>
+				<li>Find the average popularity of the artists in your library and see how obscure your music tastes are</li>
 				<li>Sort your music library for various song attributes like
 					<ul>
 						<li>Danceabilty</li>
@@ -99,15 +108,21 @@
        		   				</ul>	
        		   			</li>	
        		   		</ul>
-	  </div>
+	  	</div>
 	  </div>
        
        <div class="row">
-       	<div class ="col">
-        	<button id="login-button" class="btn btn-primary">Log in with Spotify</button>	
+       	<div class ="col" align="center">
+       		<br>
+       		<br>
+        	<button id="login-button" class="btn-lg btn-success" data-target="button">Connect to Spotify</button>
+        	<br>
+        	<br>
+        	<br>	
 	  	</div>
 	   </div>
 	  </div>
+	  
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -19,7 +19,27 @@
         body {
             background-image: url("purple-lightpurp.png");
         }
-
+		
+		.title {
+			font-size: 50px;
+			color: #111;
+			
+		}
+		
+		.description {
+			font-size: 30px;
+			color: #000;
+		}
+		
+		h1 {
+			color: #000;
+		}
+		
+		#top-tracks-long, #top-tracks-med, #top-tracks-short {
+			font-size: 20px;
+			color: #000;
+		}
+		
 
     </style>
   </head>
@@ -56,34 +76,63 @@
       </div>
     </nav>
     
-	<div class="container" style="background-color: antiquewhite">
+	<div class="container">
 	<div class="row">
-		<div class="col">
-			<p class="lead">Your Music</p>
+		<div class="col title" align="center">
+			<p>Your Music</p>
 		</div>
 
 	</div>
 	<div class="row">
-		<div class="col">
-			<p>Find out your most played tracks, artists, genres and more with this these visualization created from your library</p>
+		<div class="col description" align="center">
+			<p>Find out your most played tracks, artists, genres and more with this these visualizations created from your library</p>
 		</div>
-		<div class="row">
-			<div class="col">
-				<ul class="top_tracks">
-					
-				</ul>
+	</div> 	
+	</div>
+  	
+  	<div class="container">
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Top Tracks of All Time</h1>
+					<ul id="top-tracks-long">
+
+					</ul>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col">
+				<br>
+				<h1>Top Tracks From the Last 6 Months</h1>
+					<ul id="top-tracks-med">
+
+					</ul>
 			</div>
-		</div>
-		
-	</div>   	
+  		</div>
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Top Tracks From the Last 4 Weeks</h1>
+  					<ul id="top-tracks-short">
 
-	</div>
+					</ul>	
+  			</div>
+  		</div>
+  		
+  	</div>
 
-	<script id="test-template" type="text/x-handlebars-template">
-    	<h1>This is a test template. Your top song is {{items.0.name}}</h1>
-    </script>
-	
-	<div id="test">Hello</div>
+  	<script id="top-tracks-template" type="text/x-handlebars">
+		<li>{{items.0.name}} by {{items.0.artists.0.name}}</li>
+		<li>{{items.1.name}} by {{items.1.artists.0.name}}</li>
+		<li>{{items.2.name}} by {{items.2.artists.0.name}}</li>
+		<li>{{items.3.name}} by {{items.3.artists.0.name}}</li>
+		<li>{{items.4.name}} by {{items.4.artists.0.name}}</li>
+		<li>{{items.5.name}} by {{items.5.artists.0.name}}</li>
+		<li>{{items.6.name}} by {{items.6.artists.0.name}}</li>
+		<li>{{items.7.name}} by {{items.7.artists.0.name}}</li>
+		<li>{{items.8.name}} by {{items.8.artists.0.name}}</li>
+		<li>{{items.9.name}} by {{items.9.artists.0.name}}</li>   		
+    </script>	
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -92,14 +141,15 @@
     <script>
 		$(document).ready(function() {
 			var access_token = sessionStorage.getItem('access_token');
-			var testTemplate = $("#test-template").html();
-			console.log(testTemplate);
+			var topTracksTemplate = $("#top-tracks-template").html();
+			
+			console.log(topTracksTemplate);
 
-			var template = Handlebars.compile(testTemplate);
+			var template = Handlebars.compile(topTracksTemplate);
 			console.log("PRINTING compiled template object");
 			console.log(template);
 			
-			function getTopTracks(access_token) {
+			function getTopTracksLong(access_token) {
 				$.ajax({
 					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10&offset=0',
 					headers: {
@@ -111,16 +161,56 @@
 					  var top_tracks = "";
 					  for(var i = 0; i < 10; i++) {
 						  console.log(response.items[i].name);
-						  top_tracks += "<li>" + response.items[i].name + "</li>" 
 						  
 					  }
-					  $(".top_tracks").html(top_tracks);
-					  $("#test").html(template(response));
+					  $("#top-tracks-long").html(template(response));
 					}
 				});
 			}
 			
-			getTopTracks(access_token);
+			
+			function getTopTracksMed(access_token) {
+				$.ajax({
+					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0',
+					headers: {
+					  'Authorization': 'Bearer ' + access_token
+					},
+					success: function(response) {
+					  console.log("PRINTING response from top tracks");
+					  console.log(response);
+					  var top_tracks = "";
+					  for(var i = 0; i < 10; i++) {
+						  console.log(response.items[i].name);
+						  
+					  }
+					  $("#top-tracks-med").html(template(response));
+					}
+				});
+			}
+			
+			function getTopTracksShort(access_token) {
+				$.ajax({
+					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10&offset=0',
+					headers: {
+					  'Authorization': 'Bearer ' + access_token
+					},
+					success: function(response) {
+					  console.log("PRINTING response from top tracks");
+					  console.log(response);
+					  var top_tracks = "";
+					  for(var i = 0; i < 10; i++) {
+						  console.log(response.items[i].name);
+						  
+					  }
+					  $("#top-tracks-short").html(template(response));
+					}
+				});
+			}
+			
+			
+			getTopTracksLong(access_token);
+			getTopTracksMed(access_token);
+			getTopTracksShort(access_token);
 		});
 		
 	  
