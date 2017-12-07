@@ -18,14 +18,14 @@
 		
 		body {
 			/*background-color: #000000;*/
-      /*#5B00BA*/
-      background-image: url("purple-orange.png");
-      background-size: cover;
+      		/*#5B00BA*/
+		  background-image: url("purple-orange.png");
+/*		  background-size: cover;*/
 		}
 
-    li.nav-item:hover {
-/*            background-color: #FFF !important;*/
-    }
+		li.nav-item:hover {
+	/*            background-color: #FFF !important;*/
+		}
 		
 		.nav-link:hover {
 /*			color:#5B00BA !important;*/
@@ -42,6 +42,10 @@
 		
 		.home-list {
 			font-size: 20px;
+		}
+		
+		#loggedin {
+			font-size: 70px;
 		}
 					
 
@@ -80,7 +84,7 @@
     </nav>
  
    
-    <div class="container">
+    <div class="container" id="login">
       <div class="row">
       	<div class="col home-title" align="center">
 			<p>Welcome to Spotify Analytics</p>
@@ -122,6 +126,14 @@
         	<br>	
 	  	</div>
 	   </div>
+	  </div>
+	  
+	  <div class="container" id="loggedin">
+	  	<div class="row">
+	  		<div class="col" align="center">
+				<p>You're logged in!</p>
+	  		</div>
+	  	</div> 
 	  </div>
 	  
     
@@ -174,55 +186,22 @@
         var access_token = params.access_token,
             state = params.state,
             storedState = localStorage.getItem(stateKey);
-
-        console.log("PRINTING storedState");
-        console.log(storedState);
+		  
         console.log("PRINTING localStorage");
         console.log(localStorage.getItem(stateKey));
 		  
 		console.log("PRINTING sessionStorage");
-		// sessionStorage.setItem("access_token", access_token);
-		console.log(sessionStorage.getItem("access_token"));
-    console.log("PRINTING sessionStorage null test");
-    if (sessionStorage.getItem("access_token") == null) {
-      console.log("True, sessionStorage is null");
-    }
-					
-        if (access_token && (state == null || state !== storedState)) {
-          alert('There was an error during the authentication');
-        } 
-        else {
-          localStorage.removeItem(stateKey);
-          if (access_token) {
-            $.ajax({
-                url: 'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0',
-                headers: {
-                  'Authorization': 'Bearer ' + access_token
-                },
-                success: function(response) {
-                  console.log("PRINTING response from top tracks");
-                  console.log(response);
-				  for(var i = 0; i < 10; i++) {
-                  	console.log(response.items[i].name);
-				  }
-
-
-                  $('#login').hide();
-                  $('#loggedin').show();
-                }
-            });
-          } else {
-              $('#login').show();
-              $('#loggedin').hide();
-          }
-
+		console.log(sessionStorage.getItem("access_token"));	  
+		  
+		console.log("PRINTING sessionStorage null test");
+		if (sessionStorage.getItem("access_token") == 'undefined' || sessionStorage.getItem("access_token") == null) {
+		  console.log("True, sessionStorage is undefined");	
           document.getElementById('login-button').addEventListener('click', function() {
-
             var client_id = 'd4557495633b429a85292698a89e5978'; // Your client id
             var redirect_uri = 'http://sites.bxmc.poly.edu/~zafirhasan/final/home.html'; // Your redirect uri
             var state = generateRandomString(16);
-            localStorage.setItem(stateKey, state);
-            var scope = 'user-read-private user-read-email user-top-read';
+            localStorage.setItem(stateKey, state);	//set the stateKey as the random string state
+            var scope = 'user-read-private user-read-email user-top-read user-library-read';
             var url = 'https://accounts.spotify.com/authorize';
             url += '?response_type=token';
             url += '&client_id=' + encodeURIComponent(client_id);
@@ -231,7 +210,50 @@
             url += '&state=' + encodeURIComponent(state);
             window.location = url;
           }, false);
-        }
+			
+			var params = getHashParams();
+			var access_token = params.access_token,
+            	state = params.state,
+            	storedState = localStorage.getItem(stateKey);
+			
+			console.log("PRINTING sessionStorage inside of if statement")
+			sessionStorage.setItem("access_token", access_token);
+			console.log(sessionStorage.getItem("access_token"));
+			
+			if (access_token && (state == null || state !== storedState)) {
+          		alert('There was an error during the authentication');	
+        	} 
+			else {
+			  localStorage.removeItem(stateKey);
+			  if (access_token) {
+				$.ajax({
+					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0',
+					headers: {
+					  'Authorization': 'Bearer ' + access_token
+					},
+					success: function(response) {
+					  console.log("PRINTING response from top tracks");
+					  console.log(response);
+					  for(var i = 0; i < 10; i++) {
+						console.log(response.items[i].name);
+					  }
+					  $('#login').hide();
+					  $('#loggedin').show();
+					}
+				});
+			  } else {
+				  $('#login').show();
+				  $('#loggedin').hide();
+          		}
+
+        	}		
+			
+		}
+		else {
+			$('#login').hide();
+		 	$('#loggedin').show();
+		}	   
+        
       });
     </script>
 	

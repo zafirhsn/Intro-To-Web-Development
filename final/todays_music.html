@@ -17,8 +17,8 @@
     	}
 		
 		body {
-			 background-image: url("purple-violet.png");
-       background-size: cover;
+			background-image: url("purple-violet.png");
+       		background-size: cover;
 		}
 		
 		.title {
@@ -29,6 +29,10 @@
 		
 		.description {
 			font-size: 30px;
+			color: #000;
+		}
+		
+		.container {
 			color: #000;
 		}
 
@@ -84,11 +88,63 @@
     	</div>   	
     	
     </div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<br>
+				<h1>Today's Featured Playlists</h1>
+					<ul id="featured-playlists">
+
+					</ul>
+			</div>
+		</div>
+	</div>
+
+    <script id="todays-playlists" type="text/x-handlebars">
+		<li>{{playlists.items.0.name}}</li>
+		<li>{{playlists.items.1.name}}</li>
+		<li>{{playlists.items.2.name}}</li>
+		<li>{{playlists.items.3.name}}</li>
+		<li>{{playlists.items.4.name}}</li>
+		<li>{{playlists.items.5.name}}</li>
+		<li>{{playlists.items.6.name}}</li>
+		<li>{{playlists.items.7.name}}</li>
+		<li>{{playlists.items.8.name}}</li>
+		<li>{{playlists.items.9.name}}</li>   		
+    </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="data.js"></script>
+
     <script>
-		
+		$(document).ready(function() {
+			var access_token = sessionStorage.getItem('access_token');
+			var playlistTemplate = $("#todays-playlists").html();
+			
+			var template = Handlebars.compile(playlistTemplate);
+
+			function getFeaturedPlaylists(access_token) {
+				$.ajax({
+					url: 'https://api.spotify.com/v1/browse/featured-playlists?locale=eng_US&country=US&timestamp=2017-12-6T09%3A00%3A00&limit=10&offset=0',
+					headers: {
+					  'Authorization': 'Bearer ' + access_token
+					},
+					success: function(response) {
+					  console.log("PRINTING response from today's featured playlists");
+					  console.log(response);
+					  var playlists = "";
+					  for(var i = 0; i < 10; i++) {
+						  console.log(response.playlists.items[i].name);		  
+					  }
+					  $("#featured-playlists").html(template(response));
+					}
+				});
+			}
+			
+			getFeaturedPlaylists(access_token);
+			
+		});
 		
 	  
 	</script>
