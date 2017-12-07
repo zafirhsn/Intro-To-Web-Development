@@ -18,13 +18,14 @@
 		
 		body {
 			/*background-color: #000000;*/
-            background-image: url("purple-orange.png");
-			
+      /*#5B00BA*/
+      background-image: url("purple-orange.png");
+      background-size: cover;
 		}
 
-        li.nav-item:hover {
+    li.nav-item:hover {
 /*            background-color: #FFF !important;*/
-        }
+    }
 		
 		.nav-link:hover {
 /*			color:#5B00BA !important;*/
@@ -180,8 +181,12 @@
         console.log(localStorage.getItem(stateKey));
 		  
 		console.log("PRINTING sessionStorage");
-		sessionStorage.setItem("access_token", access_token);
+		// sessionStorage.setItem("access_token", access_token);
 		console.log(sessionStorage.getItem("access_token"));
+    console.log("PRINTING sessionStorage null test");
+    if (sessionStorage.getItem("access_token") == null) {
+      console.log("True, sessionStorage is null");
+    }
 					
         if (access_token && (state == null || state !== storedState)) {
           alert('There was an error during the authentication');
