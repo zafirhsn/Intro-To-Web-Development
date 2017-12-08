@@ -19,27 +19,27 @@
         body {
             background-image: url("purple-lightpurp.png");
             background-size: cover;
-			color: #111;
+			color: #fff;
         }
 		
 		.title {
 			font-size: 50px;
-			color: #111;`
+			color: #fff;`
 			
 		}
 		
 		.description {
 			font-size: 30px;
-			color: #000;
+			color: #fff;
 		}
 		
 		h1 {
-			color: #000;
+			color: #fff;
 		}
 		
 		#top-tracks-long, #top-tracks-med, #top-tracks-short, #top-artists-long {
 			font-size: 20px;
-			color: #000;
+			color: #fff;
 		}
 		
 
@@ -191,23 +191,29 @@
 			console.log("PRINTING compiled template object");
 			console.log(template);
 			
+			var TopTracksLong = {};
 			function getTopTracksLong(access_token) {
-				$.ajax({
-					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10&offset=0',
-					headers: {
-					  'Authorization': 'Bearer ' + access_token
-					},
-					success: function(response) {
-					  console.log("PRINTING response from top tracks");
-					  console.log(response);
-					  var top_tracks = "";
-					  for(var i = 0; i < 10; i++) {
-						  console.log(response.items[i].name);
-						  
-					  }
-					  $("#top-tracks-long").html(template(response));
-					}
-				});
+			   $.ajax({
+			       url: 'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10&offset=0',
+			       headers: {
+			           'Authorization': 'Bearer ' + access_token
+			       },
+			       success: responseFunction
+			   });
+			}
+
+			function responseFunction(response) {
+			   console.log("PRINTING response from top tracks");
+			   console.log(response);
+			   var top_tracks = "";
+			   for (var i = 0; i < 10; i++) {
+			       console.log(response.items[i].name);
+
+			   }
+			   TopTracksLong = response;
+			   console.log("PRINTING saved JSON");
+			   console.log(TopTracksLong);
+			   $("#top-tracks-long").html(template(response));
 			}
 			
 			
@@ -294,6 +300,9 @@
 			getTopTracksShort(access_token);
 			getSavedSongs(access_token);
 			getTopArtistsLong(access_token);
+
+			console.log("PRINTING the saved JSON object");
+			console.log(TopTracksLong);
 			
 		});
 		

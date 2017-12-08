@@ -23,17 +23,17 @@
 		
 		.title {
 			font-size: 50px;
-			color: #000;
+			color: #fff;
 			
 		}
 		
 		.description {
 			font-size: 30px;
-			color: #000;
+			color: #fff;
 		}
 		
 		.container {
-			color: #000;
+			color: #fff;
 		}
 
     #featured-playlists {
@@ -130,7 +130,7 @@
 
 			function getFeaturedPlaylists(access_token) {
 				$.ajax({
-					url: 'https://api.spotify.com/v1/browse/featured-playlists?locale=eng_US&country=US&timestamp=2017-12-6T09%3A00%3A00&limit=10&offset=0',
+					url: 'https://api.spotify.com/v1/browse/featured-playlists?country=US&locale=eng_US&timestamp=2017-12-7T09:00:00&limit=10&offset=0',
 					headers: {
 					  'Authorization': 'Bearer ' + access_token
 					},
