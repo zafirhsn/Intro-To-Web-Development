@@ -8,6 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 
     <style type="text/css">
     	div.container-fluid, nav {
@@ -19,14 +21,16 @@
 		body {
 			/*background-color: #000000;*/
       		/*#5B00BA*/
-		  background-image: url("purple-orange.png");		
-    }
+			background-image: url("purple-orange.png");
+			font-family: 'Roboto', sans-serif;
+			
+    	}
 
-    @media screen and (max-width: 520px) {
-      body {
-        background-size: cover;
-      }
-    }
+		@media screen and (max-width: 520px) {
+		  body {
+			background-size: cover;
+		  }
+		}
 
 		li.nav-item:hover {
 	/*            background-color: #FFF !important;*/
@@ -58,7 +62,7 @@
   </head>
   <body>
 	<!--Standard bootsstrap nav-->
-    <nav class="p-3 navbar navbar-expand-sm navbar-dark" style="background-color: #222;">
+    <nav class="p-3 navbar sticky-top navbar-expand-sm navbar-dark" style="background-color: #222;">
       
       <!-- Hamburger button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,18 +102,17 @@
      
       <div class="row">
       	<div class="col home-descrip" align="center">
-       		<p>This site uses Spotify's web API to visualize data for popular playlists, songs, and your own user statistics <br><br> 
+       		<p>This site uses Spotify's web API to give users a glance at their listening habits and statistics<br><br> 
        		Connect your Spotify Account to</p>
 		</div>
 	  </div> 
       <div class="row">
       	<div class="col home-list">	   
 			<ul> 
-				<li>Compare attributes of songs on the Global Top 50 playlist</li>
-				<li>Compare </li>
 				<li>Check out your top tracks and artists from the last 4 weeks, 6 months, or of all time</li>
+				<li>Find out which of your songs are happier, easier to dance to, have more energy, are more instrumental or vocal and more</li>
 				<li>Find the average popularity of the artists in your library and see how obscure your music tastes are</li>
-				<li>Sort your music library for various song attributes like
+				<li>Put in the name of a playlist you own
 					<ul>
 						<li>Danceabilty</li>
 						<li>Valence</li>

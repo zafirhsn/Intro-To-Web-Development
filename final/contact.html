@@ -8,6 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 
     <style type="text/css">
     	div.container-fluid, nav {
@@ -17,8 +19,19 @@
     	}
 		
 		body {
-			 background-image: url("purple-black.png");
-			 background-size: cover;
+			background-image: url("purple-black.png");
+			font-family: 'Roboto', sans-serif;
+			color: #fff;
+		}
+		
+		.title {
+			font-size: 50px;
+			color: #fff;
+		}
+		
+		.description {
+			font-size: 30px;
+			color: #fff;
 		}
 
 
@@ -57,6 +70,40 @@
         </ul>
       </div>
     </nav>
+    
+    <div class="container">
+    	<div class="row">
+    		<div class="col title" align="center">
+    			<p>Contact</p>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col description" align="center">
+    			<p>Zafir Hasan is a computer science student at NYU. Here's some of the music I listen to</p>
+    		</div>
+    	</div>
+    	<div class="row">
+    		<div class="col">
+    			<p>stats</p>
+    		</div>
+    		<div class="col">
+    			<form>
+				<div class="form-group">
+					<label for="first_name">First Name</label>
+					<input type="text" class="form-control" id="first_name" placeholder="First Name">
+				</div>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<label for="last_name">Last Name</label>
+					<input type="text" class="form-control" id="last_name" placeholder="Last Name">
+				</div>
+				<button type="submit" class="btn btn-default">Send</button>
+			</form>
+    		</div>
+    	</div>
+    	
+    </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
