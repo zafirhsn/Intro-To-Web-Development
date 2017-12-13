@@ -14,7 +14,7 @@
     <style type="text/css">
     	div.container-fluid, nav {
 			font-size: 20px;
-			font-weight: 400;
+			font-weight:400;
 			
     	}
 		
@@ -33,6 +33,24 @@
 			font-size: 30px;
 			color: #fff;
 		}
+		
+		.github, .gmail, .twitter {
+			display: block;
+			background-size: 100%;
+			height: 50px;
+			width: 50px;
+			opacity: 0.7;
+
+		}
+
+		.github:hover, .gmail:hover, .twitter:hover {
+			opacity: 1;
+		}
+		
+		img {
+			height:100px; 
+		}
+		
 
 
     </style>
@@ -41,7 +59,7 @@
 	
   	
    	<!--Standard bootsstrap nav-->
-    <nav class="p-3 navbar navbar-expand-sm navbar-dark" style="background-color: #222;">
+    <nav class="p-3 navbar sticky-top navbar-expand-sm navbar-dark" style="background-color: #222;">
       
       <!-- Hamburger button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,34 +90,71 @@
     </nav>
     
     <div class="container">
-    	<div class="row">
+    	<div class="row mb-5">
     		<div class="col title" align="center">
     			<p>Contact</p>
     		</div>
     	</div>
     	<div class="row">
-    		<div class="col description" align="center">
-    			<p>Zafir Hasan is a computer science student at NYU. Here's some of the music I listen to</p>
-    		</div>
-    	</div>
-    	<div class="row">
+    		
     		<div class="col">
-    			<p>stats</p>
-    		</div>
-    		<div class="col">
-    			<form>
-				<div class="form-group">
-					<label for="first_name">First Name</label>
-					<input type="text" class="form-control" id="first_name" placeholder="First Name">
-				</div>
+				<p>Here is some of the music I love listening to!</p>
+				<br>
+
+				<h3>Top Track</h3>
+				<p>Tap Out by the Strokes</p>
+				<img src="the_strokes.jpg">
+
+				<br>
+				<br>
+				<h3>Top Artist</h3>
+				<p>Kendrick Lamar</p>
+				<img src="kendrick.jpg">
+   				<br>
+    			<br>	
+    			<h3>Top Genre</h3>
+    			<p>Indietronica</p>
 			</div>
-			<div class="col">
-				<div class="form-group">
-					<label for="last_name">Last Name</label>
-					<input type="text" class="form-control" id="last_name" placeholder="Last Name">
-				</div>
-				<button type="submit" class="btn btn-default">Send</button>
-			</form>
+    			
+    		<div class="col">
+				<form>
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+								<label for="first_name">First Name</label>
+								<input type="text" class="form-control" id="first_name" placeholder="First Name">
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="last_name">Last Name</label>
+								<input type="text" class="form-control" id="last_name" placeholder="Last Name">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="message">Message</label>
+								<textarea class="form-control" id="message" rows="10" placeholder="Send me some feedback"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 col-md-3 col-lg-2">
+							<button type="submit" class="btn btn-primary">Send</button>
+						</div>
+						<div class="col-sm-4 col-md-3 col-lg-2">
+							<a class="github" href="https://github.com/zafirhsn" style="background-image: url(github.svg); height: 55px; width: 55px"></a>
+						</div>
+						<div class="col-sm-4 col-md-3 col-lg-2">
+							<a class="gmail" href="#" style="background-image: url(gmail.png);"></a>
+						</div>
+						<div class="col-sm-4 col-md-3 col-lg-2">
+							<a class="twitter" href="#" style="background-image: url(twitter.png);"></a>
+						</div>
+					</div>
+				</form>
     		</div>
     	</div>
     	
