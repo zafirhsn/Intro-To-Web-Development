@@ -33,7 +33,7 @@
 		}
 
 		li.nav-item:hover {
-	/*            background-color: #FFF !important;*/
+	 /*background-color: #FFF !important;*/
 		}
 		
 		.nav-link:hover {
@@ -139,12 +139,28 @@
 	  <div class="container" id="loggedin">
 	  	<div class="row">
 	  		<div class="col" align="center">
-				<p>You're logged in!</p>
+          <p>You're logged in!</p>
 	  		</div>
-	  	</div> 
-	  </div>
+      </div>
+      <div class="row">
+        <div class="col" id="welcome" align="center">
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col" align="center">
+          <button id="random-button" class="btn-lg btn-primary" data-target="button">Random</button>
+        </div>
+
+	  	</div>
+    </div> 
 	  
-    
+    <script id="welcome-template" type="text/x-handlebars">
+      <p>{{response.display_name}}</p>  
+    </script>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      
@@ -209,7 +225,7 @@
             var redirect_uri = 'http://sites.bxmc.poly.edu/~zafirhasan/final/home.html'; // Your redirect uri
             var state = generateRandomString(16);
             localStorage.setItem(stateKey, state);	//set the stateKey as the random string state
-            var scope = 'user-read-private user-read-email user-top-read user-library-read';
+            var scope = 'user-read-private user-read-email user-read-birthdate user-top-read user-library-read playlist-read-private';
             var url = 'https://accounts.spotify.com/authorize';
             url += '?response_type=token';
             url += '&client_id=' + encodeURIComponent(client_id);
@@ -234,32 +250,52 @@
 			else {
 			  localStorage.removeItem(stateKey);
 			  if (access_token) {
-				$.ajax({
-					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0',
-					headers: {
-					  'Authorization': 'Bearer ' + access_token
-					},
-					success: function(response) {
-					  console.log("PRINTING response from top tracks");
-					  console.log(response);
-					  for(var i = 0; i < 10; i++) {
-						console.log(response.items[i].name);
-					  }
-					  $('#login').hide();
-					  $('#loggedin').show();
-					}
-				});
-			  } else {
+			      var welcome_template = $("#welcome-template").html();
+            var compiledWelcomeTemplate = Handlebars.compile(welcome_template);
+
+           $.ajax({
+               url: 'https://api.spotify.com/v1/me',
+               headers: {
+                   'Authorization': 'Bearer ' + access_token
+               },
+               success: function(response) {
+                 console.log("PRINTING response from Profile");
+                 console.log(response);
+                 $('#loggedin').show();
+                 $("#welcome").html(compiledWelcomeTemplate(response));
+                 $('#login').hide();
+                 console.log("AFTER template done");
+               }
+           });
+			  } 
+        
+        else {
 				  $('#login').show();
 				  $('#loggedin').hide();
           		}
 
-        	}		
+        }		
 			
 		}
 		else {
-			$('#login').hide();
-		 	$('#loggedin').show();
+      var access_token = sessionStorage.getItem("access_token");
+      var welcome_template = $("#welcome-template").html();
+      var compiledWelcomeTemplate = Handlebars.compile(welcome_template);
+
+      $.ajax({
+         url: 'https://api.spotify.com/v1/me',
+         headers: {
+             'Authorization': 'Bearer ' + access_token
+         },
+         success: function(response) {
+           console.log("PRINTING response from Profile");
+           console.log(response);
+           $('#loggedin').show();
+           $("#welcome").html(compiledWelcomeTemplate(response));
+           $('#login').hide();
+          
+         }
+     });
 		}	   
         
       });

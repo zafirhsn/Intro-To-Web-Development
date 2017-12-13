@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Today's Music</title>
+    <title>Your Playlists</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +20,7 @@
 		
 		body {
 			background-image: url("purple-green.png");
-      		background-size: cover;
+      background-size: cover;
 			font-family: 'Roboto', sans-serif;
 		}
 		
@@ -68,10 +68,10 @@
          	<a class="nav-link" href="home.html">Home</a>
          </li>
           <li class="nav-item active">
-            <a class="nav-link" href="todays_music.html">Today's Music</a>
+            <a class="nav-link" href="todays_music.html">Your Playlists</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="your_music.html">Your Music</a>
+            <a class="nav-link" href="your_music.html">Your Charts</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
@@ -83,13 +83,13 @@
     <div class="container">
     	<div class="row">
     		<div class="col title" align="center">
-				<p>Today's Music</p>
+				<p>Your Playlists</p>
     		</div>
     		
     	</div>
      	<div class="row">
     		<div class="col description" align="center">
-				<p>Here are some stats on the songs topping global charts right now, taken from the Global Top 50 playlist</p>
+				<p>Search for a playlist you own or follow and get a glance at its song attributes</p>
     		</div>
     		
     	</div>   	
@@ -126,36 +126,7 @@
 
     <script>
 		$(document).ready(function() {
-			var access_token = sessionStorage.getItem('access_token');
-			var playlistTemplate = $("#todays-playlists").html();
-			
-			var template = Handlebars.compile(playlistTemplate);
-			
-			var date = new Date();
-			ISOdate = date.toISOString();
-			function getFeaturedPlaylists(access_token) {
-				$.ajax({
-					url: 'https://api.spotify.com/v1/browse/featured-playlists?country=US&locale=eng_US&timestamp=' + ISOdate + '&limit=10&offset=0',
-					headers: {
-					  'Authorization': 'Bearer ' + access_token
-					},
-					success: function(response) {
-					  console.log("PRINTING response from today's featured playlists");
-					  console.log(response);
-					  var playlists = "";
-					  for(var i = 0; i < 10; i++) {
-						  console.log(response.playlists.items[i].name);		  
-					  }
-					  $("#featured-playlists").html(template(response));
-					}
-				});
-			}
-
-
-			
-			
-			
-			getFeaturedPlaylists(access_token);
+	
 			
 		});
 		

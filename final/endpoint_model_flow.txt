@@ -1,0 +1,11 @@
+Your Playlists
+===============
+
+
+get a list of current user's playlists (response.items[i].id) => id of playlist
+get a list of playlist tracks (need user id and playlist id and market) user id from v1/me endpoint
+get audio features for several tracks (
+
+
+
+37i9dQZF1DWSfMe9z89s9B
