@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Contact</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+
+    <style type="text/css">
+    	div.container-fluid, nav {
+			font-size: 20px;
+			font-weight:400;
+			
+    	}
+		
+		body {
+			background-image: url("purple-black.png");
+			font-family: 'Roboto', sans-serif;
+			color: #fff;
+		}
+		
+		.title {
+			font-size: 50px;
+			color: #fff;
+		}
+		
+		.description {
+			font-size: 30px;
+			color: #fff;
+		}
+		
+		.github, .gmail, .twitter {
+			display: block;
+			background-size: 100%;
+			height: 50px;
+			width: 50px;
+			opacity: 0.7;
+
+		}
+
+		.github:hover, .gmail:hover, .twitter:hover {
+			opacity: 1;
+		}
+		
+		img {
+			height:100px; 
+		}
+		
+
+
+    </style>
+  </head>
+  <body>
+	
+  	
+   	<!--Standard bootsstrap nav-->
+    <nav class="p-3 navbar sticky-top navbar-expand-sm navbar-dark" style="background-color: #222;">
+      
+      <!-- Hamburger button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<!-- Hamburger icon -->
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+		<!--Logo/Brand link on right side of screen-->
+      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
+
+		<!--Expanded navbar-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+         <li class="nav-item"> 
+         	<a class="nav-link" href="home.html">Home</a>
+         </li>
+          <li class="nav-item">
+            <a class="nav-link" href="todays_music.html">Today's Music</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="your_music.html">Your Music</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="container">
+    	<div class="row mb-5">
+    		<div class="col title" align="center">
+    			<p>Contact</p>
+    		</div>
+    	</div>
+    	<div class="row">
+    		
+    		<div class="col">
+				<p>Here is some of the music I love listening to!</p>
+				<br>
+
+				<h3>Top Track</h3>
+				<p>Tap Out by the Strokes</p>
+				<img src="the_strokes.jpg" alt="The Strokes RCA Album cover" class="rounded">
+
+				<br>
+				<br>
+				<h3>Top Artist</h3>
+				<p>Kendrick Lamar</p>
+				<img src="kendrick.jpg" alt="Kendrick Lamar" class="rounded">
+   				<br>
+    			<br>	
+    			<h3>Top Genre</h3>
+    			<p>Indietronica</p>
+			</div>
+    			
+    		<div class="col">
+				<form>
+					<div class="form-row">
+						<div class="col">
+							<div class="form-group">
+								<label for="first_name">First Name</label>
+								<input type="text" class="form-control" id="first_name" placeholder="First Name">
+							</div>
+						</div>
+						<div class="col">
+							<div class="form-group">
+								<label for="last_name">Last Name</label>
+								<input type="text" class="form-control" id="last_name" placeholder="Last Name">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<div class="form-group">
+								<label for="message">Message</label>
+								<textarea class="form-control" id="message" rows="10" placeholder="Send me some feedback"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 col-md-3 col-lg-2">
+							<button type="submit" class="btn btn-primary">Send</button>
+						</div>
+						<div class="col-sm-4 col-md-3 col-lg-2">
+							<a class="github" href="https://github.com/zafirhsn" style="background-image: url(github.svg); height: 55px; width: 55px"></a>
+						</div>
+						<div class="col-sm-4 col-md-3 col-lg-2">
+							<a class="gmail" href="#" style="background-image: url(gmail.png);"></a>
+						</div>
+						<div class="col-sm-4 col-md-3 col-lg-2">
+							<a class="twitter" href="#" style="background-image: url(twitter.png);"></a>
+						</div>
+					</div>
+				</form>
+    		</div>
+    	</div>
+    	
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+		
+		
+	  
+	</script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>

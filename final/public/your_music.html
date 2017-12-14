@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Your Charts</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+
+    <style type="text/css">
+        div.container-fluid, nav {
+            font-size: 20px;
+            font-weight: 400;
+            
+        }
+        
+        body {
+            background-image: url("purple-lightpurp.png");
+            background-size: cover;
+			color: #fff;
+			font-family: 'Roboto', sans-serif;
+        }
+		
+		.title {
+			font-size: 50px;
+			color: #fff;`
+			
+		}
+		
+		.description {
+			font-size: 30px;
+			color: #fff;
+		}
+		
+		h1 {
+			color: #fff;
+		}
+		
+		#top-tracks-long, #top-tracks-med, #top-tracks-short, #top-artists-long {
+			font-size: 20px;
+			color: #fff;
+		}
+		
+		@-webkit-keyframes fadeIn {
+			0% {
+				opacity: 0;
+			}
+			50% {
+				opacity: 0.5;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.animation {
+			-webkit-animation: fadeIn 1s linear;
+			-moz-animation: fadeIn 1s linear;
+			-o-animation: fadeIn 1s linear;
+			animation: fadeIn 1s linear;
+		}
+		
+
+    </style>
+  </head>
+  <body>
+  	
+   	<!--Standard bootsstrap nav-->
+    <nav class="p-3 navbar sticky-top navbar-expand-sm navbar-dark" style="background-color: #222;">
+      
+      <!-- Hamburger button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<!-- Hamburger icon -->
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+		<!--Logo/Brand link on right side of screen-->
+      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
+
+		<!--Expanded navbar-->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+         <li class="nav-item"> 
+         	<a class="nav-link" href="home.html">Home</a>
+         </li>
+          <li class="nav-item">
+            <a class="nav-link" href="todays_music.html">Your Playlists</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="your_music.html">Your Charts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+	<div class="container">
+	<div class="row">
+		<div class="col title" align="center">
+			<p>Your Charts</p>
+		</div>
+
+	</div>
+	<div class="row">
+		<div class="col description" align="center">
+			<p>Find out your most played tracks, artists, genres and more with this these visualizations created from your library</p>
+		</div>
+	</div> 	
+	</div>
+  	
+  	<div class="container">
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Top Tracks of All Time</h1>
+					<ul id="top-tracks-long" class="animation">
+
+					</ul>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col">
+				<br>
+				<h1>Top Tracks From the Last 6 Months</h1>
+					<ul id="top-tracks-med" class="animation">
+
+					</ul>
+			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Top Tracks From the Last 4 Weeks</h1>
+  					<ul id="top-tracks-short" class="animation">
+
+					</ul>	
+  			</div>
+  		</div>
+ 		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Top Artists of All Time</h1>
+  					<ul id="top-artists-long" class="animation">
+
+					</ul>	
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Popularity of your Top Artists</h1>
+  					<ul id="average-pop" class="animation">
+						
+					</ul>	
+  			</div>
+  		</div>
+  		
+  	</div>
+
+  	<script id="top-tracks-template" type="text/x-handlebars">
+		<li>{{items.0.name}} by {{items.0.artists.0.name}}</li>
+		<li>{{items.1.name}} by {{items.1.artists.0.name}}</li>
+		<li>{{items.2.name}} by {{items.2.artists.0.name}}</li>
+		<li>{{items.3.name}} by {{items.3.artists.0.name}}</li>
+		<li>{{items.4.name}} by {{items.4.artists.0.name}}</li>
+		<li>{{items.5.name}} by {{items.5.artists.0.name}}</li>
+		<li>{{items.6.name}} by {{items.6.artists.0.name}}</li>
+		<li>{{items.7.name}} by {{items.7.artists.0.name}}</li>
+		<li>{{items.8.name}} by {{items.8.artists.0.name}}</li>
+		<li>{{items.9.name}} by {{items.9.artists.0.name}}</li>   		
+    </script>
+    
+    <script id="top-artists-template" type="text/x-handlebars">
+		<li>{{items.0.name}}</li>
+		<li>{{items.1.name}}</li>
+		<li>{{items.2.name}}</li>
+		<li>{{items.3.name}}</li>
+		<li>{{items.4.name}}</li>
+		<li>{{items.5.name}}</li>
+		<li>{{items.6.name}}</li>
+		<li>{{items.7.name}}</li>
+		<li>{{items.8.name}}</li>
+		<li>{{items.9.name}}</li>   		
+    </script>
+    
+    <script id="pop-template" type="text/x-handlebars">
+		<p style="font-size: 50px">{{avgpop}}</p>  
+	</script>	
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <script>
+		
+		(function() {
+//		$(document).ready(function() {
+			var access_token = sessionStorage.getItem('access_token');
+			var topTracksTemplate = $("#top-tracks-template").html();
+			var topArtistsTemplate = $("#top-artists-template").html();
+			var avgPopTemplate = $("#pop-template").html();
+			
+			console.log(topTracksTemplate);
+
+			var template = Handlebars.compile(topTracksTemplate);
+			var artistTemplate = Handlebars.compile(topArtistsTemplate);
+			var popTemplate = Handlebars.compile(avgPopTemplate);
+			
+			console.log("PRINTING compiled template object");
+			console.log(template);
+			
+			var TopTracksLong = {};
+			function getTopTracksLong(access_token) {
+			   $.ajax({
+			       url: 'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10&offset=0',
+			       headers: {
+			           'Authorization': 'Bearer ' + access_token
+			       },
+			       success: responseFunction
+			   });
+			}
+
+			function responseFunction(response) {
+			   console.log("PRINTING response from top tracks");
+			   console.log(response);
+			   var top_tracks = "";
+			   for (var i = 0; i < 10; i++) {
+			       console.log(response.items[i].name);
+
+			   }
+			   TopTracksLong = response;
+			   console.log("PRINTING saved JSON");
+			   console.log(TopTracksLong);
+			   $("#top-tracks-long").html(template(response));
+			}
+			
+			
+			function getTopTracksMed(access_token) {
+				$.ajax({
+					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0',
+					headers: {
+					  'Authorization': 'Bearer ' + access_token
+					},
+					success: function(response) {
+					  console.log("PRINTING response from top tracks");
+					  console.log(response);
+					  var top_tracks = "";
+					  for(var i = 0; i < 10; i++) {
+						  console.log(response.items[i].name);
+						  
+					  }
+					  $("#top-tracks-med").html(template(response));
+					}
+				});
+			}
+			
+			function getTopTracksShort(access_token) {
+				$.ajax({
+					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10&offset=0',
+					headers: {
+					  'Authorization': 'Bearer ' + access_token
+					},
+					success: function(response) {
+					  console.log("PRINTING response from top tracks");
+					  console.log(response);
+					  var top_tracks = "";
+					  for(var i = 0; i < 10; i++) {
+						  console.log(response.items[i].name);
+						  
+					  }
+					  $("#top-tracks-short").html(template(response));
+					}
+				});
+			}
+			
+			
+			function getTopArtistsLong(access_token) {
+				var avgPop = 0;
+				$.ajax({
+					url: 'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10&offset=0',
+					headers: {
+					  'Authorization': 'Bearer ' + access_token
+					},
+					success: function(response) {
+					  console.log("PRINTING response top artists");
+					  console.log(response);
+					  var top_tracks = "";
+					  for(var i = 0; i < 10; i++) {
+						  console.log(response.items[i].popularity);
+						  avgPop += response.items[i].popularity;
+					  }
+					  avgPop = avgPop / response.limit;
+					  var popResponse = {avgpop: avgPop};
+					  $("#top-artists-long").html(artistTemplate(response));
+					  $("#average-pop").html(popTemplate(popResponse));
+					}
+				});
+			}
+
+			function getSavedSongs(access_token) {
+				$.ajax({
+					url: 'https://api.spotify.com/v1/me/tracks?limit=50&offset=0',
+					headers: {
+					  'Authorization': 'Bearer ' + access_token
+					},
+					success: function(response) {
+					  console.log("PRINTING response from 50 saved songs");
+					  console.log(response);
+					  var top_tracks = "";
+//					  for(var i = 0; i < 10; i++) {
+//						  console.log(response.items[i].name);	  
+//					  }
+					}
+				});
+			}
+			
+			getTopTracksLong(access_token);
+			getTopTracksMed(access_token);
+			getTopTracksShort(access_token);
+			getSavedSongs(access_token);
+			getTopArtistsLong(access_token);
+
+			console.log("PRINTING the saved JSON object");
+			console.log(TopTracksLong);
+			
+//		});
+		})();
+			
+			
+	</script>
+ 
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>
