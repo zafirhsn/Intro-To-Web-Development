@@ -88,10 +88,10 @@
          	<a class="nav-link" href="home.html">Home</a>
          </li>
           <li class="nav-item">
-            <a class="nav-link" href="todays_music.html">Your Playlists</a>
+            <a class="nav-link" href="todays_music.html">Your Artists</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="your_music.html">Your Charts</a>
+            <a class="nav-link" href="your_music.html">Your Tracks</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
@@ -109,7 +109,7 @@
 	</div>
 	<div class="row">
 		<div class="col description" align="center">
-			<p>Find out your most played tracks, artists, genres and more with this these visualizations created from your library</p>
+			<p>See Your Top Tracks</p>
 		</div>
 	</div> 	
 	</div>
@@ -142,7 +142,7 @@
 					</ul>	
   			</div>
   		</div>
- 		<div class="row">
+<!--  		<div class="row">
   			<div class="col">
   				<br>
   				<h1>Top Artists of All Time</h1>
@@ -150,15 +150,15 @@
 
 					</ul>	
   			</div>
-  		</div>
-  		<div class="row">
+  		</div> -->
+ <!--  		<div class="row">
   			<div class="col">
   				<br>
   				<h1>Average Popularity of your Top Artists</h1>
   					<ul id="average-pop" class="animation">
 						
 					</ul>	
-  			</div>
+  			</div> -->
   		</div>
   		
   	</div>
@@ -280,28 +280,28 @@
 			}
 			
 			
-			function getTopArtistsLong(access_token) {
-				var avgPop = 0;
-				$.ajax({
-					url: 'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10&offset=0',
-					headers: {
-					  'Authorization': 'Bearer ' + access_token
-					},
-					success: function(response) {
-					  console.log("PRINTING response top artists");
-					  console.log(response);
-					  var top_tracks = "";
-					  for(var i = 0; i < 10; i++) {
-						  console.log(response.items[i].popularity);
-						  avgPop += response.items[i].popularity;
-					  }
-					  avgPop = avgPop / response.limit;
-					  var popResponse = {avgpop: avgPop};
-					  $("#top-artists-long").html(artistTemplate(response));
-					  $("#average-pop").html(popTemplate(popResponse));
-					}
-				});
-			}
+			// function getTopArtistsLong(access_token) {
+			// 	var avgPop = 0;
+			// 	$.ajax({
+			// 		url: 'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10&offset=0',
+			// 		headers: {
+			// 		  'Authorization': 'Bearer ' + access_token
+			// 		},
+			// 		success: function(response) {
+			// 		  console.log("PRINTING response top artists");
+			// 		  console.log(response);
+			// 		  var top_tracks = "";
+			// 		  for(var i = 0; i < 10; i++) {
+			// 			  console.log(response.items[i].popularity);
+			// 			  avgPop += response.items[i].popularity;
+			// 		  }
+			// 		  avgPop = avgPop / response.limit;
+			// 		  var popResponse = {avgpop: avgPop};
+			// 		  $("#top-artists-long").html(artistTemplate(response));
+			// 		  $("#average-pop").html(popTemplate(popResponse));
+			// 		}
+			// 	});
+			// }
 
 			function getSavedSongs(access_token) {
 				$.ajax({

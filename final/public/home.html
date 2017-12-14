@@ -99,10 +99,10 @@
          	<a class="nav-link" href="home.html">Home</a>
          </li>
           <li class="nav-item">
-            <a class="nav-link" href="todays_music.html">Your Playlists</a>
+            <a class="nav-link" href="todays_music.html">Your Artists</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="your_music.html">Your Charts</a>
+            <a class="nav-link" href="your_music.html">Your Tracks</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
@@ -160,7 +160,7 @@
   
     </div>
     
-    <div class="container animation" id="random-track" align="center">
+<!--     <div class="container animation" id="random-track" align="center">
     	<div class="row">
     		<div class="col">
     			<h2>{{Track Name}}</h2>
@@ -173,7 +173,7 @@
     			<h5>Key: </h5>
     		</div>
     	</div>		
-    </div> 
+    </div>  -->
 	  
     <script id="welcome-template" type="text/x-handlebars">
 		<div class="row">
@@ -187,15 +187,14 @@
 				<img id="pic" src="#" class="rounded-circle">
 			</div>
 		</div>
-
-      <div class="row">
-			<div class="col" align="center">
-			  <button id="random-button" class="btn-lg btn-primary" data-target="button">Random</button>
-			</div>
-	  </div>
       
     </script>
 
+   <!--       <div class="row">
+			<div class="col" align="center">
+			  <button id="random-button" class="btn-lg btn-primary" data-target="button">Random</button>
+			</div>
+	  </div> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -310,29 +309,28 @@
 					   }
 				   });
 					
-				   document.getElementById('random-button').addEventListener('click', function() {
-						$.ajax({
-						   url: 'https://api.spotify.com/v1/browse/new-releases',
-						   headers: {
-							   'Authorization': 'Bearer ' + access_token
-						   },
-						   success: returnResponse	   
-					   });
+				  //  document.getElementById('random-button').addEventListener('click', function() {
+						// $.ajax({
+						//    url: 'https://api.spotify.com/v1/browse/new-releases',
+						//    headers: {
+						// 	   'Authorization': 'Bearer ' + access_token
+						//    },
+						//    success: returnResponse	   
+					 //   });
 						
-					   	  var randomTrack = ""
-						  function returnResponse(response) {
-							 console.log("PRINTING response from Profile");
-							 console.log(response);
-							 console.log(response.country);
-							 $("#loggedin").html(compiledWelcomeTemplate(response));
-							 $("#pic").attr("src", response.images[0].url);
-							 $('#loggedin').show();
-							 $('#login').hide();
-							 console.log("AFTER template done")
-							}				   
+					 //   	  var randomTrack = ""
+						//   function returnResponse(response) {
+						// 	 console.log("PRINTING response from Profile");
+						// 	 console.log(response);
+						// 	 console.log(response.country);
+						// 	 $("#loggedin").html(compiledWelcomeTemplate(response));
+						// 	 $("#pic").attr("src", response.images[0].url);
+						// 	 $('#loggedin').show();
+						// 	 $('#login').hide();
+						// 	 console.log("AFTER template done")
+						// 	}				   
 					   
-				   }, false);	
-					
+				  //  }, false);			
 					
 			  	}
 				else {
