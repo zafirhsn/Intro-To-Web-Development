@@ -20,7 +20,7 @@
 		
 		body {
 			background-image: url("purple-green.png");
-      background-size: cover;
+      		background-size: cover;
 			font-family: 'Roboto', sans-serif;
 		}
 		
@@ -38,10 +38,27 @@
 		.container {
 			color: #fff;
 		}
+		
+		@-webkit-keyframes fadeIn {
+			0% {
+				opacity: 0;
+			}
+			50% {
+				opacity: 0.5;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
 
-    #featured-playlists {
-      font-size: 20px;
-    }
+		.animation {
+			-webkit-animation: fadeIn 1s linear;
+			-moz-animation: fadeIn 1s linear;
+			-o-animation: fadeIn 1s linear;
+			animation: fadeIn 1s linear;
+		}
+		
+
 
 
     </style>
@@ -91,42 +108,56 @@
     		<div class="col description" align="center">
 				<p>Search for a playlist you own or follow and get a glance at its song attributes</p>
     		</div>
-    		
-    	</div>   	
-    	
+    	</div> 
+    	<div class="row my-5">
+			<div class="col" align="center">
+				<form>
+					<div class="form-group">
+						<input type="text" class="form-control-lg" id="playlist" placeholder="Enter a playlist">
+					</div>
+				</form>
+			</div>
+		</div>  	
     </div>
 
 	<div class="container">
 		<div class="row">
-			<div class="col">
-				<br>
-				<h1>Today's Featured Playlists</h1>
-					<ul id="featured-playlists">
-
-					</ul>
+			<div class="col animation" align="center">
+				<h1>{{Your Playlist name}}</h1>
+				<p>{{Your playlist image}}</p>
+				<h2>Happiness: {{score}}</h2>
+				<h2>Danceability: {{score}}</h2>
+				<h2>Energy: {{score}}</h2>
+				<h2>Tempo: {{score}}</h2>
 			</div>
 		</div>
 	</div>
 
-    <script id="todays-playlists" type="text/x-handlebars">
-		<li>{{playlists.items.0.name}}</li>
-		<li>{{playlists.items.1.name}}</li>
-		<li>{{playlists.items.2.name}}</li>
-		<li>{{playlists.items.3.name}}</li>
-		<li>{{playlists.items.4.name}}</li>
-		<li>{{playlists.items.5.name}}</li>
-		<li>{{playlists.items.6.name}}</li>
-		<li>{{playlists.items.7.name}}</li>
-		<li>{{playlists.items.8.name}}</li>
-		<li>{{playlists.items.9.name}}</li>   		
-    </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script>
 		$(document).ready(function() {
-	
+			var access_token = sessionStorage.getItem("access_token");
+			
+			function getPlaylists(access_token) {
+				$.ajax({
+					url: 'https://api.spotify.com/v1/me/playlists?limit=50&offset=0',
+					headers: {
+					  'Authorization': 'Bearer ' + access_token
+					},
+					success: responseFunction 
+				});
+			}
+					   
+			function responseFunction(response) {
+					console.log("PRINTING response from Current User's Playlists")
+					console.log(response);
+			}
+			
+			
+			getPlaylists(access_token);
 			
 		});
 		

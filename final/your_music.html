@@ -8,6 +8,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 
     <style type="text/css">
         div.container-fluid, nav {
@@ -20,6 +22,7 @@
             background-image: url("purple-lightpurp.png");
             background-size: cover;
 			color: #fff;
+			font-family: 'Roboto', sans-serif;
         }
 		
 		.title {
@@ -40,6 +43,25 @@
 		#top-tracks-long, #top-tracks-med, #top-tracks-short, #top-artists-long {
 			font-size: 20px;
 			color: #fff;
+		}
+		
+		@-webkit-keyframes fadeIn {
+			0% {
+				opacity: 0;
+			}
+			50% {
+				opacity: 0.5;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.animation {
+			-webkit-animation: fadeIn 1s linear;
+			-moz-animation: fadeIn 1s linear;
+			-o-animation: fadeIn 1s linear;
+			animation: fadeIn 1s linear;
 		}
 		
 
@@ -97,7 +119,7 @@
   			<div class="col">
   				<br>
   				<h1>Top Tracks of All Time</h1>
-					<ul id="top-tracks-long">
+					<ul id="top-tracks-long" class="animation">
 
 					</ul>
   			</div>
@@ -106,7 +128,7 @@
   			<div class="col">
 				<br>
 				<h1>Top Tracks From the Last 6 Months</h1>
-					<ul id="top-tracks-med">
+					<ul id="top-tracks-med" class="animation">
 
 					</ul>
 			</div>
@@ -115,7 +137,7 @@
   			<div class="col">
   				<br>
   				<h1>Top Tracks From the Last 4 Weeks</h1>
-  					<ul id="top-tracks-short">
+  					<ul id="top-tracks-short" class="animation">
 
 					</ul>	
   			</div>
@@ -124,7 +146,7 @@
   			<div class="col">
   				<br>
   				<h1>Top Artists of All Time</h1>
-  					<ul id="top-artists-long">
+  					<ul id="top-artists-long" class="animation">
 
 					</ul>	
   			</div>
@@ -133,7 +155,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Popularity of your Top Artists</h1>
-  					<ul id="average-pop">
+  					<ul id="average-pop" class="animation">
 						
 					</ul>	
   			</div>
@@ -295,6 +317,7 @@
 					}
 				});
 			}
+			
 			getTopTracksLong(access_token);
 			getTopTracksMed(access_token);
 			getTopTracksShort(access_token);

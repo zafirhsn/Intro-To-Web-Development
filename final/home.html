@@ -14,8 +14,7 @@
     <style type="text/css">
     	div.container-fluid, nav {
 			font-size: 20px;
-			font-weight: 400;
-			
+			font-weight: 400;	
     	}
 		
 		body {
@@ -55,6 +54,25 @@
 		
 		#loggedin {
 			font-size: 70px;
+		}
+		
+		@-webkit-keyframes fadeIn {
+			0% {
+				opacity: 0;
+			}
+			50% {
+				opacity: 0.5;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+
+		.animation {
+			-webkit-animation: fadeIn 1s linear;
+			-moz-animation: fadeIn 1s linear;
+			-o-animation: fadeIn 1s linear;
+			animation: fadeIn 1s linear;
 		}
 					
 
@@ -219,10 +237,12 @@
 		  
 		console.log("PRINTING sessionStorage null test");
 		if (sessionStorage.getItem("access_token") == 'undefined' || sessionStorage.getItem("access_token") == null) {
-		  console.log("True, sessionStorage is undefined");	
-          document.getElementById('login-button').addEventListener('click', function() {
+		  
+			console.log("True, sessionStorage is undefined");	
+          
+			document.getElementById('login-button').addEventListener('click', function() {
             var client_id = 'd4557495633b429a85292698a89e5978'; // Your client id
-            var redirect_uri = 'http://sites.bxmc.poly.edu/~zafirhasan/final/home.html'; // Your redirect uri
+            var redirect_uri = 'https://zafirhsn.github.io/Intro-To-Web-Development/final/home.html'; // Your redirect uri
             var state = generateRandomString(16);
             localStorage.setItem(stateKey, state);	//set the stateKey as the random string state
             var scope = 'user-read-private user-read-email user-read-birthdate user-top-read user-library-read playlist-read-private';
@@ -233,7 +253,7 @@
             url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
             url += '&state=' + encodeURIComponent(state);
             window.location = url;
-          }, false);
+            }, false);
 			
 			var params = getHashParams();
 			var access_token = params.access_token,
@@ -247,59 +267,59 @@
 			if (access_token && (state == null || state !== storedState)) {
           		alert('There was an error during the authentication');	
         	} 
-			else {
-			  localStorage.removeItem(stateKey);
-			  if (access_token) {
-			      var welcome_template = $("#welcome-template").html();
-            var compiledWelcomeTemplate = Handlebars.compile(welcome_template);
-
-           $.ajax({
-               url: 'https://api.spotify.com/v1/me',
-               headers: {
-                   'Authorization': 'Bearer ' + access_token
-               },
-               success: function(response) {
-                 console.log("PRINTING response from Profile");
-                 console.log(response);
-                 $('#loggedin').show();
-                 $("#welcome").html(compiledWelcomeTemplate(response));
-                 $('#login').hide();
-                 console.log("AFTER template done");
-               }
-           });
-			  } 
-        
-        else {
-				  $('#login').show();
-				  $('#loggedin').hide();
-          		}
-
-        }		
 			
-		}
-		else {
-      var access_token = sessionStorage.getItem("access_token");
-      var welcome_template = $("#welcome-template").html();
-      var compiledWelcomeTemplate = Handlebars.compile(welcome_template);
+			else {
+				localStorage.removeItem(stateKey);
+				if (access_token) {
+			  		var welcome_template = $("#welcome-template").html();
+            		var compiledWelcomeTemplate = Handlebars.compile(welcome_template);
 
-      $.ajax({
-         url: 'https://api.spotify.com/v1/me',
-         headers: {
-             'Authorization': 'Bearer ' + access_token
-         },
-         success: function(response) {
-           console.log("PRINTING response from Profile");
-           console.log(response);
-           $('#loggedin').show();
-           $("#welcome").html(compiledWelcomeTemplate(response));
-           $('#login').hide();
-          
-         }
-     });
+				   $.ajax({
+					   url: 'https://api.spotify.com/v1/me',
+					   headers: {
+						   'Authorization': 'Bearer ' + access_token
+					   },
+					   success: function(response) {
+						 console.log("PRINTING response from Profile");
+						 console.log(response);
+						 $('#loggedin').show();
+						 $("#welcome").html(compiledWelcomeTemplate(response));
+						 $('#login').hide();
+						 console.log("AFTER template done");
+					   }
+				   });
+			  	}
+				else {
+					$('#login').show();
+					$('#loggedin').hide(); 		
+				}
+			}
+								
+		}
+		  
+		else {
+		  var access_token = sessionStorage.getItem("access_token");
+		  var welcome_template = $("#welcome-template").html();
+		  var compiledWelcomeTemplate = Handlebars.compile(welcome_template);
+
+		  $.ajax({
+			 url: 'https://api.spotify.com/v1/me',
+			 headers: {
+				 'Authorization': 'Bearer ' + access_token
+			 },
+			 success: function(response) {
+			   console.log("PRINTING response from Profile");
+			   console.log(response);
+			   $('#loggedin').show();
+			   $("#welcome").html(compiledWelcomeTemplate(response));
+			   $('#login').hide();
+
+			 }
+		 });
 		}	   
-        
-      });
-    </script>
+	  });
+    
+	  </script>
 	
 
     <!-- Optional JavaScript -->
