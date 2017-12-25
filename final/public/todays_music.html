@@ -129,9 +129,9 @@
   			<div class="col">
   				<br>
   				<h1>Top Artists of All Time</h1>
-  					<ul id="top-artists-long" class="animation">
+  					<ol id="top-artists-long" class="animation">
 
-					</ul>	
+					</ol>	
   			</div>
   		</div>
   		<div class="row">
@@ -165,43 +165,45 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="data.js"></script>
 
     <script>
 		(function() { 
 //		$(document).ready(function() {
-
+			//Get the access token
 			var access_token = sessionStorage.getItem('access_token');
-			var topArtistsTemplate = $("#top-artists-template").html();
-			var avgPopTemplate = $("#pop-template").html();
+			
+			//Get inner html of templates
+			var topArtists = $("#top-artists-template").html();
+			var avgPop = $("#pop-template").html();
+			
+			//Compile templates
+			var artistTemplate = Handlebars.compile(topArtists);
+			var popTemplate = Handlebars.compile(avgPop);
+			
+			
+			var topArtistsID = "#top-artists-long";
+			var popID = "#average-pop";
 
-			var artistTemplate = Handlebars.compile(topArtistsTemplate);
-			var popTemplate = Handlebars.compile(avgPopTemplate);
-
-
-			function getTopArtistsLong(access_token) {
-				var avgPop = 0;
-				$.ajax({
-					url: 'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10&offset=0',
-					headers: {
-					  'Authorization': 'Bearer ' + access_token
-					},
-					success: function(response) {
-					  console.log("PRINTING response top artists");
-					  console.log(response);
-					  var top_tracks = "";
-					  for(var i = 0; i < 10; i++) {
-						  console.log(response.items[i].popularity);
-						  avgPop += response.items[i].popularity;
-					  }
-					  avgPop = avgPop / response.limit;
-					  var popResponse = {avgpop: avgPop};
-					  $("#top-artists-long").html(artistTemplate(response));
-					  $("#average-pop").html(popTemplate(popResponse));
-					}
-				});
+			//Fills in Top Artists Template and stores response in sessionStorage
+			getTopArtistsLong(access_token, artistTemplate, topArtistsID);
+			
+			
+			console.log("Printing session storage");
+			var stringResponse = sessionStorage.getItem("topArtistsLong");
+			console.log(JSON.parse(stringResponse));
+			var response = JSON.parse(stringResponse);
+			
+			var avgPop = 0;
+			for(var i = 0; i < 10; i++) {
+				console.log(response.items[i].popularity);
+				avgPop += response.items[i].popularity;
 			}
+			avgPop = avgPop / response.limit;
+			var popResponse = {avgpop: avgPop};
+			$(popID).html(popTemplate(popResponse));
+			
 
-			getTopArtistsLong(access_token);
 
 
 
