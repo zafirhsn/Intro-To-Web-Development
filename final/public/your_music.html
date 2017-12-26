@@ -195,89 +195,39 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+	<script src="data.js"></script>
 
     <script>
 		
 		(function() {
 //		$(document).ready(function() {
-			var access_token = sessionStorage.getItem('access_token');
-			var topTracksTemplate = $("#top-tracks-template").html();
-			var topArtistsTemplate = $("#top-artists-template").html();
-			var avgPopTemplate = $("#pop-template").html();
 			
-			console.log(topTracksTemplate);
+			//Get the access token
+			var access_token = sessionStorage.getItem('access_token');
+			
+			//Get inner html of templates
+			var topTracks = $("#top-tracks-template").html();
+			var topArtists = $("#top-artists-template").html();
+			var avgPopTemplate = $("#pop-template").html();
 
-			var template = Handlebars.compile(topTracksTemplate);
-			var artistTemplate = Handlebars.compile(topArtistsTemplate);
+			//Compile templates
+			var tracksTemplate = Handlebars.compile(topTracks);
+			var artistTemplate = Handlebars.compile(topArtists);
 			var popTemplate = Handlebars.compile(avgPopTemplate);
 			
-			console.log("PRINTING compiled template object");
-			console.log(template);
+			//ID of new templates to be filled
+			var tracksLongID = "#top-tracks-long";
+			var tracksMedID = "#top-tracks-med";
+			var tracksShortID = "#top-tracks-short";
 			
-			var TopTracksLong = {};
-			function getTopTracksLong(access_token) {
-			   $.ajax({
-			       url: 'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=10&offset=0',
-			       headers: {
-			           'Authorization': 'Bearer ' + access_token
-			       },
-			       success: responseFunction
-			   });
-			}
+			getTopTracksLong(access_token, tracksTemplate, tracksLongID);
+			getTopTracksMed(access_token, tracksTemplate, tracksMedID);
+			getTopTracksShort(access_token, tracksTemplate, tracksShortID);
+			
+			
+			
+			
 
-			function responseFunction(response) {
-			   console.log("PRINTING response from top tracks");
-			   console.log(response);
-			   var top_tracks = "";
-			   for (var i = 0; i < 10; i++) {
-			       console.log(response.items[i].name);
-
-			   }
-			   TopTracksLong = response;
-			   console.log("PRINTING saved JSON");
-			   console.log(TopTracksLong);
-			   $("#top-tracks-long").html(template(response));
-			}
-			
-			
-			function getTopTracksMed(access_token) {
-				$.ajax({
-					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=10&offset=0',
-					headers: {
-					  'Authorization': 'Bearer ' + access_token
-					},
-					success: function(response) {
-					  console.log("PRINTING response from top tracks");
-					  console.log(response);
-					  var top_tracks = "";
-					  for(var i = 0; i < 10; i++) {
-						  console.log(response.items[i].name);
-						  
-					  }
-					  $("#top-tracks-med").html(template(response));
-					}
-				});
-			}
-			
-			function getTopTracksShort(access_token) {
-				$.ajax({
-					url: 'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10&offset=0',
-					headers: {
-					  'Authorization': 'Bearer ' + access_token
-					},
-					success: function(response) {
-					  console.log("PRINTING response from top tracks");
-					  console.log(response);
-					  var top_tracks = "";
-					  for(var i = 0; i < 10; i++) {
-						  console.log(response.items[i].name);
-						  
-					  }
-					  $("#top-tracks-short").html(template(response));
-					}
-				});
-			}
 			
 			
 			// function getTopArtistsLong(access_token) {

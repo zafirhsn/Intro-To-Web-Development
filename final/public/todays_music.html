@@ -181,18 +181,22 @@
 			var artistTemplate = Handlebars.compile(topArtists);
 			var popTemplate = Handlebars.compile(avgPop);
 			
-			
+			//ID of new templates to be filled
 			var topArtistsID = "#top-artists-long";
 			var popID = "#average-pop";
-
+				
+			var response = {};
+			
 			//Fills in Top Artists Template and stores response in sessionStorage
-			getTopArtistsLong(access_token, artistTemplate, topArtistsID);
-			
-			
-			console.log("Printing session storage");
-			var stringResponse = sessionStorage.getItem("topArtistsLong");
-			console.log(JSON.parse(stringResponse));
-			var response = JSON.parse(stringResponse);
+			if (sessionStorage.getItem("topArtistsLong") == null || sessionStorage.getItem("topArtistsLong") == undefined) {
+				getTopArtistsLong(access_token, artistTemplate, topArtistsID);
+
+			}
+			else {
+				var stringResponse = sessionStorage.getItem("topArtistsLong");
+				var response = JSON.parse(stringResponse);
+				$(topArtistsID).html(artistTemplate(response));
+			}
 			
 			var avgPop = 0;
 			for(var i = 0; i < 10; i++) {
