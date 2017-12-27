@@ -200,8 +200,8 @@
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      
     <script>
-		(function() {
-//      $(document).ready(function() {
+//		(function() {
+      $(document).ready(function() {
         console.log("In beginning of function");
 
         var stateKey = 'spotify_auth_state';
@@ -260,7 +260,7 @@
           
 			document.getElementById('login-button').addEventListener('click', function() {
             var client_id = 'd4557495633b429a85292698a89e5978'; // Your client id
-            var redirect_uri = 'http://localhost:8888/home.html'; // Your redirect uri
+            var redirect_uri = 'http://sites.bxmc.poly.edu/~zafirhasan/final/home.html'; // Your redirect uri
             var state = generateRandomString(16);
             localStorage.setItem(stateKey, state);	//set the stateKey as the random string state
             var scope = 'user-read-private user-read-email user-read-birthdate user-top-read user-library-read playlist-read-private';
@@ -363,9 +363,9 @@
 		 });
 		}
 		  
-//	  });
+	  });
 	
-		})();
+//		})();
     
 	  </script>
 	

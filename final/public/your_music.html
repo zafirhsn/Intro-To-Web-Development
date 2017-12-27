@@ -119,26 +119,53 @@
   			<div class="col">
   				<br>
   				<h1>Top Tracks of All Time</h1>
-					<ul id="top-tracks-long" class="animation">
+					<ol id="top-tracks-long" class="animation">
 
-					</ul>
+					</ol>
   			</div>
   		</div>
   		<div class="row">
   			<div class="col">
 				<br>
 				<h1>Top Tracks From the Last 6 Months</h1>
-					<ul id="top-tracks-med" class="animation">
+					<ol id="top-tracks-med" class="animation">
 
-					</ul>
+					</ol>
 			</div>
   		</div>
   		<div class="row">
   			<div class="col">
   				<br>
   				<h1>Top Tracks From the Last 4 Weeks</h1>
-  					<ul id="top-tracks-short" class="animation">
+  					<ol id="top-tracks-short" class="animation">
 
+					</ol>	
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Popularity of your Top Tracks</h1>
+  					<ul id="average-pop-long" class="animation">
+						
+					</ul>	
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Popularity of your Top Tracks From The Last 6 Months</h1>
+  					<ul id="average-pop-med" class="animation">
+						
+					</ul>	
+  			</div>
+  		</div>
+   		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Popularity of your Top Tracks From The Last 4 Weeks</h1>
+  					<ul id="average-pop-short" class="animation">
+						
 					</ul>	
   			</div>
   		</div>
@@ -161,7 +188,6 @@
   			</div> -->
   		</div>
   		
-  	</div>
 
   	<script id="top-tracks-template" type="text/x-handlebars">
 		<li>{{items.0.name}} by {{items.0.artists.0.name}}</li>
@@ -199,8 +225,8 @@
 
     <script>
 		
-		(function() {
-//		$(document).ready(function() {
+//		(function() {
+		$(document).ready(function() {
 			
 			//Get the access token
 			var access_token = sessionStorage.getItem('access_token');
@@ -220,67 +246,72 @@
 			var tracksMedID = "#top-tracks-med";
 			var tracksShortID = "#top-tracks-short";
 			
-			getTopTracksLong(access_token, tracksTemplate, tracksLongID);
-			getTopTracksMed(access_token, tracksTemplate, tracksMedID);
-			getTopTracksShort(access_token, tracksTemplate, tracksShortID);
+			var popLongID = "#average-pop-long";
+			var popMedID = "#average-pop-med";
+			var popShortID = "#average-pop-short";
 			
+			var tLongRes = {};
+			var tMedRes = {};
+			var tShortRes = {};
 			
-			
-			
-
-			
-			
-			// function getTopArtistsLong(access_token) {
-			// 	var avgPop = 0;
-			// 	$.ajax({
-			// 		url: 'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=10&offset=0',
-			// 		headers: {
-			// 		  'Authorization': 'Bearer ' + access_token
-			// 		},
-			// 		success: function(response) {
-			// 		  console.log("PRINTING response top artists");
-			// 		  console.log(response);
-			// 		  var top_tracks = "";
-			// 		  for(var i = 0; i < 10; i++) {
-			// 			  console.log(response.items[i].popularity);
-			// 			  avgPop += response.items[i].popularity;
-			// 		  }
-			// 		  avgPop = avgPop / response.limit;
-			// 		  var popResponse = {avgpop: avgPop};
-			// 		  $("#top-artists-long").html(artistTemplate(response));
-			// 		  $("#average-pop").html(popTemplate(popResponse));
-			// 		}
-			// 	});
-			// }
-
-			function getSavedSongs(access_token) {
-				$.ajax({
-					url: 'https://api.spotify.com/v1/me/tracks?limit=50&offset=0',
-					headers: {
-					  'Authorization': 'Bearer ' + access_token
-					},
-					success: function(response) {
-					  console.log("PRINTING response from 50 saved songs");
-					  console.log(response);
-					  var top_tracks = "";
-//					  for(var i = 0; i < 10; i++) {
-//						  console.log(response.items[i].name);	  
-//					  }
-					}
-				});
+			if (sessionStorage.getItem("topTracksLong") == null || sessionStorage.getItem("topTracksLong") == undefined) {
+				console.log("session storage is empty so we have to make new requests");
+				
+				sessionStorage.setItem("topTracksLong", JSON.stringify(getTopTracksLong(access_token, tracksTemplate, tracksLongID)));
+				
+				sessionStorage.setItem("topTracksMed", JSON.stringify(getTopTracksMed(access_token, tracksTemplate, tracksMedID)));
+					
+				sessionStorage.setItem("topTracksShort", JSON.stringify(getTopTracksShort(access_token, tracksTemplate, tracksShortID)));
+				
+				tLongRes = JSON.parse(sessionStorage.getItem("topTracksLong"));
+				tMedRes = JSON.parse(sessionStorage.getItem("topTracksMed"));
+				tShortRes = JSON.parse(sessionStorage.getItem("topTracksShort"));
+				
+			}
+			else {
+				console.log("Session storage is not empty so we won't make more requests");
+				
+				tLongRes = JSON.parse(sessionStorage.getItem("topTracksLong"));
+				tMedRes = JSON.parse(sessionStorage.getItem("topTracksMed"));
+				tShortRes = JSON.parse(sessionStorage.getItem("topTracksShort"));
+				
+				$(tracksLongID).html(tracksTemplate(tLongRes));
+				$(tracksMedID).html(tracksTemplate(tMedRes));
+				$(tracksShortID).html(tracksTemplate(tShortRes));
 			}
 			
-			getTopTracksLong(access_token);
-			getTopTracksMed(access_token);
-			getTopTracksShort(access_token);
-			getSavedSongs(access_token);
-			getTopArtistsLong(access_token);
-
-			console.log("PRINTING the saved JSON object");
-			console.log(TopTracksLong);
+			var avgPop = 0;
+			for(var i = 0; i < tLongRes.items.length; i++) {
+				console.log(tLongRes.items[i].popularity);
+				avgPop += tLongRes.items[i].popularity;
+			}
+			avgPop = avgPop / tLongRes.items.length;
+			var popLongRes = {avgpop: avgPop};
+			$(popLongID).html(popTemplate(popLongRes));
 			
-//		});
-		})();
+			avgPop = 0;
+			for(var i = 0; i < tMedRes.items.length; i++) {
+				console.log(tMedRes.items[i].popularity);
+				avgPop += tMedRes.items[i].popularity;
+			}
+			avgPop = avgPop / tMedRes.items.length;
+			var popMedRes = {avgpop: avgPop};
+			$(popMedID).html(popTemplate(popMedRes));
+			
+			avgPop = 0;
+			for(var i = 0; i < tShortRes.items.length; i++) {
+				console.log(tShortRes.items[i].popularity);
+				avgPop += tShortRes.items[i].popularity;
+			}
+			avgPop = avgPop / tShortRes.items.length;
+			var popShortRes = {avgpop: avgPop};
+			$(popShortID).html(popTemplate(popShortRes));
+
+			
+			
+		});
+		
+//		})();
 			
 			
 	</script>

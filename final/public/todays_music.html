@@ -19,7 +19,12 @@
     	}
 		
 		body {
-			background-image: url("purple-green.png");
+			background: #5b00ba; /* Old browsers */
+			background: -moz-linear-gradient(top, #5b00ba 0%, #056d27 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top, #5b00ba 0%,#056d27 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom, #5b00ba 0%,#056d27 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b00ba', endColorstr='#056d27',GradientType=0 ); /* IE6-9 */
+/*			background-image: url("purple-green.png");*/
 			font-family: 'Roboto', sans-serif;
 		}
 		
@@ -38,7 +43,7 @@
 			color: #fff;
 		}
 
-		#top-artists-long {
+		#top-artists-long, #top-artists-med, #top-artists-short {
 			font-size: 20px;
 			color: #fff;
 		}
@@ -134,11 +139,47 @@
 					</ol>	
   			</div>
   		</div>
+ 		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Top Artists From The Last 6 Months</h1>
+  					<ol id="top-artists-med" class="animation">
+
+					</ol>	
+  			</div>
+  		</div>
+ 		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Top Artists From The Last 4 Weeks</h1>
+  					<ol id="top-artists-short" class="animation">
+
+					</ol>	
+  			</div>
+  		</div>
   		<div class="row">
   			<div class="col">
   				<br>
   				<h1>Average Popularity of your Top Artists</h1>
-  					<ul id="average-pop" class="animation">
+  					<ul id="average-pop-long" class="animation">
+						
+					</ul>	
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Popularity of your Top Artists From The Last 6 Months</h1>
+  					<ul id="average-pop-med" class="animation">
+						
+					</ul>	
+  			</div>
+  		</div>
+   		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Popularity of your Top Artists From The Last 4 Weeks</h1>
+  					<ul id="average-pop-short" class="animation">
 						
 					</ul>	
   			</div>
@@ -168,8 +209,8 @@
     <script src="data.js"></script>
 
     <script>
-		(function() { 
-//		$(document).ready(function() {
+//		(function() { 
+		$(document).ready(function() {
 			//Get the access token
 			var access_token = sessionStorage.getItem('access_token');
 			
@@ -182,70 +223,79 @@
 			var popTemplate = Handlebars.compile(avgPop);
 			
 			//ID of new templates to be filled
-			var topArtistsID = "#top-artists-long";
-			var popID = "#average-pop";
-				
-			var response = {};
+			var artistsLongID = "#top-artists-long";
+			var artistsMedID = "#top-artists-med";
+			var artistsShortID = "#top-artists-short";
+			
+			var popLongID = "#average-pop-long";
+			var popMedID = "#average-pop-med";
+			var popShortID = "#average-pop-short";
+			
+			
+			var aLongRes = {};
+			var aMedRes = {};
+			var aShortRes = {};
 			
 			//Fills in Top Artists Template and stores response in sessionStorage
 			if (sessionStorage.getItem("topArtistsLong") == null || sessionStorage.getItem("topArtistsLong") == undefined) {
-				getTopArtistsLong(access_token, artistTemplate, topArtistsID);
+				console.log("sessionStorage is empty, so we have to make new requests");
+				
+				sessionStorage.setItem("topArtistsLong", JSON.stringify(getTopArtistsLong(access_token, artistTemplate, artistsLongID)));
+				
+				sessionStorage.setItem("topArtistsMed", JSON.stringify(getTopArtistsMed(access_token, artistTemplate, artistsMedID)));
+				
+				sessionStorage.setItem("topArtistsShort", JSON.stringify(getTopArtistsShort(access_token, artistTemplate, artistsShortID)));
+				
+				aLongRes = JSON.parse(sessionStorage.getItem("topArtistsLong"));
+				aMedRes = JSON.parse(sessionStorage.getItem("topArtistsMed"));
+				aShortRes = JSON.parse(sessionStorage.getItem("topArtistsShort"));
 
 			}
 			else {
-				var stringResponse = sessionStorage.getItem("topArtistsLong");
-				var response = JSON.parse(stringResponse);
-				$(topArtistsID).html(artistTemplate(response));
+				console.log("sessionStorage is not empty, so we don't have to make new requests");			
+				
+				aLongRes = JSON.parse(sessionStorage.getItem("topArtistsLong"));
+				aMedRes = JSON.parse(sessionStorage.getItem("topArtistsMed"));
+				aShortRes = JSON.parse(sessionStorage.getItem("topArtistsShort"));
+				
+				$(artistsLongID).html(artistTemplate(aLongRes));
+				$(artistsMedID).html(artistTemplate(aMedRes));
+				$(artistsShortID).html(artistTemplate(aShortRes));
 			}
 			
 			var avgPop = 0;
-			for(var i = 0; i < 10; i++) {
-				console.log(response.items[i].popularity);
-				avgPop += response.items[i].popularity;
+			for(var i = 0; i < aLongRes.items.length; i++) {
+				console.log(aLongRes.items[i].popularity);
+				avgPop += aLongRes.items[i].popularity;
 			}
-			avgPop = avgPop / response.limit;
-			var popResponse = {avgpop: avgPop};
-			$(popID).html(popTemplate(popResponse));
+			avgPop = avgPop / aLongRes.items.length;
+			var popLongRes = {avgpop: avgPop};
+			$(popLongID).html(popTemplate(popLongRes));
+			
+			avgPop = 0;
+			for(var i = 0; i < aMedRes.items.length; i++) {
+				console.log(aMedRes.items[i].popularity);
+				avgPop += aMedRes.items[i].popularity;
+			}
+			avgPop = avgPop / aMedRes.items.length;
+			var popMedRes = {avgpop: avgPop};
+			$(popMedID).html(popTemplate(popMedRes));
+			
+			avgPop = 0;
+			for(var i = 0; i < aShortRes.items.length; i++) {
+				console.log(aShortRes.items[i].popularity);
+				avgPop += aShortRes.items[i].popularity;
+			}
+			avgPop = avgPop / aShortRes.items.length;
+			var popShortRes = {avgpop: avgPop};
+			$(popShortID).html(popTemplate(popShortRes));
+			
 			
 
-
-
-
-			// var access_token = sessionStorage.getItem("access_token");
-			// var playlist = "";
-			// $("#playlist").on('submit', function() {
-			// 	playlist = $("#playlist".val());
-			// 				  });
-			// console.log(playlist);
 			
-			
-			// var userPlaylists = {};
-			// function getPlaylists(access_token) {
-			// 	$.ajax({
-			// 		url: 'https://api.spotify.com/v1/me/playlists?limit=50&offset=0',
-			// 		headers: {
-			// 		  'Authorization': 'Bearer ' + access_token
-			// 		},
-			// 		success: responseFunction 
-			// 	});
-			// }		
-			
-			// function responseFunction(response) {
-			// 		console.log("PRINTING response from Current User's Playlists")
-			// 		console.log(response);
-			// 		for(var i = 0; i < response.items.length; i++) {
-			// 			console.log(response.items[i].name);
-			// 			userPlaylists[response.items[i].name] = response.items[i].id;
-			// 		}
-			// 		console.log(userPlaylists);
-			// }
-						
-			
-			// getPlaylists(access_token);
-			
-//		});
+		});
 		
-		})();
+//		})();
 		
 	  
 	</script>
