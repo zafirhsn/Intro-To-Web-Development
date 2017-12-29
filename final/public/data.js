@@ -123,6 +123,27 @@ function getTopTracksShort(access_token, template, newTemplate) {
 }
 
 
+//GET AUDIO FEATURES FOR SEVERAL TRACKS
+function getSeveralFeatures(access_token, trackID) {
+	var data = {};
+	$.ajax({
+		url: 'https://api.spotify.com/v1/audio-features?ids=' + trackID,
+		headers: {
+		  'Authorization': 'Bearer ' + access_token
+		},
+		async: false, 
+		success: function(response) {
+		 	console.log("PRINTING response from several audio features");
+		  	console.log(response);
+			data = response;
+//		    sessionStorage.setItem("topTracksShort", JSON.stringify(response));
+		}
+	});
+	return data;
+}
+
+
+
 //GET USERS LAST 50 SAVED SONGS
 function getSavedSongs(access_token) {
 	$.ajax({

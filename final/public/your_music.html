@@ -168,7 +168,62 @@
 						
 					</ul>	
   			</div>
+		</div>
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Danceability of Your Top Tracks</h1>
+  					<ul id="danceable-long" class="animation">
+						
+					</ul>	
+  			</div>
   		</div>
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Danceability of Your Top Tracks From the Last 6 Months</h1>
+  					<ul id="danceable-med" class="animation">
+						
+					</ul>	
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Danceability of Your Top Tracks From the Last 4 Weeks</h1>
+  					<ul id="danceable-short" class="animation">
+						
+					</ul>	
+  			</div>
+  		</div>
+ 		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Happiness of Your Top Tracks</h1>
+  					<ul id="valence-long" class="animation">
+						
+					</ul>	
+  			</div>
+  		</div>
+ 		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Happiness of Your Top Tracks From The Last 6 Months</h1>
+  					<ul id="valence-med" class="animation">
+						
+					</ul>	
+  			</div>
+  		</div>
+ 		<div class="row">
+  			<div class="col">
+  				<br>
+  				<h1>Average Happiness of Your Top Tracks From The Last 4 Weeks</h1>
+  					<ul id="valence-short" class="animation">
+						
+					</ul>	
+  			</div>
+  		</div>
+
 <!--  		<div class="row">
   			<div class="col">
   				<br>
@@ -217,6 +272,10 @@
     
     <script id="pop-template" type="text/x-handlebars">
 		<p style="font-size: 50px">{{avgpop}}</p>  
+	</script>
+	
+	<script id="features-template" type="text/x-handlebars">
+		<p style="font-size: 50px">{{feature}}</p>  
 	</script>	
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
@@ -235,11 +294,13 @@
 			var topTracks = $("#top-tracks-template").html();
 			var topArtists = $("#top-artists-template").html();
 			var avgPopTemplate = $("#pop-template").html();
+			var features = $("#features-template").html();
 
 			//Compile templates
 			var tracksTemplate = Handlebars.compile(topTracks);
 			var artistTemplate = Handlebars.compile(topArtists);
 			var popTemplate = Handlebars.compile(avgPopTemplate);
+			var featuresTemplate = Handlebars.compile(features);
 			
 			//ID of new templates to be filled
 			var tracksLongID = "#top-tracks-long";
@@ -249,6 +310,14 @@
 			var popLongID = "#average-pop-long";
 			var popMedID = "#average-pop-med";
 			var popShortID = "#average-pop-short";
+			
+			var danceLongID = "#danceable-long";
+			var danceMedID = "#danceable-med";
+			var danceShortID = "#danceable-short";
+			
+			var valLongID = "#valence-long";
+			var valMedID = "#valence-med";
+			var valShortID = "#valence-short";
 			
 			var tLongRes = {};
 			var tMedRes = {};
@@ -280,32 +349,99 @@
 				$(tracksShortID).html(tracksTemplate(tShortRes));
 			}
 			
+			var longID = "";
 			var avgPop = 0;
 			for(var i = 0; i < tLongRes.items.length; i++) {
 				console.log(tLongRes.items[i].popularity);
 				avgPop += tLongRes.items[i].popularity;
+				longID += tLongRes.items[i].id + ',';
 			}
 			avgPop = avgPop / tLongRes.items.length;
 			var popLongRes = {avgpop: avgPop};
 			$(popLongID).html(popTemplate(popLongRes));
 			
+			var longFeatures = getSeveralFeatures(access_token, longID);
+			var longDance = 0;
+			var longVal = 0;
+			for(var i = 0; i < longFeatures.audio_features.length; i++) {
+				longDance += longFeatures.audio_features[i].danceability;
+				longVal += longFeatures.audio_features[i].valence;
+			}	
+			longDance = longDance / longFeatures.audio_features.length;
+			longDance *= 100;
+			longVal = longVal / longFeatures.audio_features.length;
+			longVal *= 100;
+			longVal = +longVal.toFixed(1);
+			
+			var longDanceRes = {feature: longDance};
+			var longValRes = {feature: longVal};
+			$(danceLongID).html(featuresTemplate(longDanceRes));
+			$(valLongID).html(featuresTemplate(longValRes));
+			
+			
+			
+			var medID = "";
 			avgPop = 0;
 			for(var i = 0; i < tMedRes.items.length; i++) {
 				console.log(tMedRes.items[i].popularity);
 				avgPop += tMedRes.items[i].popularity;
+				medID += tMedRes.items[i].id + ',';
 			}
 			avgPop = avgPop / tMedRes.items.length;
 			var popMedRes = {avgpop: avgPop};
+			getSeveralFeatures(access_token, medID);
 			$(popMedID).html(popTemplate(popMedRes));
 			
+			var medFeatures = getSeveralFeatures(access_token, medID);
+			var medDance = 0;
+			var medVal = 0;
+			for(var i = 0; i < medFeatures.audio_features.length; i++) {
+				medDance += medFeatures.audio_features[i].danceability;
+				medVal += medFeatures.audio_features[i].valence;
+			}
+			medDance = medDance / medFeatures.audio_features.length;
+			medDance *= 100;
+			medVal = medVal / medFeatures.audio_features.length;
+			medVal *= 100;
+			medVal = +medVal.toFixed(1);
+			
+			var medDanceRes = {feature: medDance}; 
+			var medValRes = {feature: medVal};
+			$(danceMedID).html(featuresTemplate(medDanceRes));
+			$(valMedID).html(featuresTemplate(medValRes));
+			
+			
+			
+			var shortID = "";
 			avgPop = 0;
 			for(var i = 0; i < tShortRes.items.length; i++) {
 				console.log(tShortRes.items[i].popularity);
 				avgPop += tShortRes.items[i].popularity;
+				shortID += tShortRes.items[i].id + ',';
 			}
 			avgPop = avgPop / tShortRes.items.length;
 			var popShortRes = {avgpop: avgPop};
+			getSeveralFeatures(access_token, shortID);
 			$(popShortID).html(popTemplate(popShortRes));
+			
+			
+			var shortFeatures = getSeveralFeatures(access_token, shortID);
+			var shortDance = 0;
+			var shortVal = 0;
+			for(var i = 0; i < shortFeatures.audio_features.length; i++) {
+				shortDance += shortFeatures.audio_features[i].danceability;
+				shortVal += shortFeatures.audio_features[i].valence;
+			}
+			shortDance = shortDance / shortFeatures.audio_features.length;
+			shortDance *= 100;
+			shortVal = shortVal / shortFeatures.audio_features.length;
+			shortVal *= 100;
+			shortVal = +shortVal.toFixed(1);
+			var shortDanceRes = {feature: shortDance}; 
+			var shortValRes = {feature: shortVal};
+			$(danceShortID).html(featuresTemplate(shortDanceRes));
+			$(valShortID).html(featuresTemplate(shortValRes));
+			
 
 			
 			
