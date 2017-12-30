@@ -74,8 +74,38 @@ function getTopTracksLong(access_token, template, newTemplate) {
 	   success: function(response) {
 			console.log("PRINTING response from top tracks long");
 			console.log(response);
+		    
+		    var trackID = "";
+		    var pop = 0;
+			for(var i = 0; i < response.items.length; i++) {
+				trackID += response.items[i].id + ',';
+				pop += response.items[i].popularity;
+			}
+		   	pop = pop / response.items.length;
+		    pop = +pop.toFixed(1);
+		   
+			var data2 = getSeveralFeatures(access_token, trackID);
+			var danceability = 0;
+			var valence = 0;
+			for(var i = 0; i < data2.audio_features.length; i++) {
+				danceability += data2.audio_features[i].danceability;
+				valence += data2.audio_features[i].valence;
+			}
+			danceability = danceability / data2.audio_features.length;
+			danceability *= 100;
+			valence = valence / data2.audio_features.length;
+			valence *= 100;
+			
+			danceability = +danceability.toFixed(1);
+			valence = +valence.toFixed(1);
+		   
+			data = response;
+			data["danceability"] = danceability;
+			data["valence"] = valence;
+		    data["avgpop"] = pop;
+		   
 			$(newTemplate).html(template(response));
-		    data = response;
+		    
 //		    sessionStorage.setItem("topTracksLong", JSON.stringify(response));
 	   }
    });
@@ -95,7 +125,38 @@ function getTopTracksMed(access_token, template, newTemplate) {
 		  	console.log("PRINTING response from top tracks med");
 		  	console.log(response);
 			$(newTemplate).html(template(response));
+			
+			
+			var trackID = "";
+		    var pop = 0;
+			for(var i = 0; i < response.items.length; i++) {
+				trackID += response.items[i].id + ',';
+				pop += response.items[i].popularity;
+			}
+		   	pop = pop / response.items.length;
+		    pop = +pop.toFixed(1);
+		   
+			var data2 = getSeveralFeatures(access_token, trackID);
+			var danceability = 0;
+			var valence = 0;
+			for(var i = 0; i < data2.audio_features.length; i++) {
+				danceability += data2.audio_features[i].danceability;
+				valence += data2.audio_features[i].valence;
+			}
+			danceability = danceability / data2.audio_features.length;
+			danceability *= 100;
+			valence = valence / data2.audio_features.length;
+			valence *= 100;
+			
+			danceability = +danceability.toFixed(1);
+			valence = +valence.toFixed(1);
+		   
 			data = response;
+			data["danceability"] = danceability;
+			data["valence"] = valence;
+		    data["avgpop"] = pop;
+	
+			$(newTemplate).html(template(response));
 //		    sessionStorage.setItem("topTracksMed", JSON.stringify(response));
 		}
 	});
@@ -114,8 +175,40 @@ function getTopTracksShort(access_token, template, newTemplate) {
 		success: function(response) {
 		 	console.log("PRINTING response from top tracks short");
 		  	console.log(response);
-			$(newTemplate).html(template(response));
+			
+			
+			var trackID = "";
+		    var pop = 0;
+			for(var i = 0; i < response.items.length; i++) {
+				trackID += response.items[i].id + ',';
+				pop += response.items[i].popularity;
+			}
+		   	pop = pop / response.items.length;
+		    pop = +pop.toFixed(1);
+		   
+			var data2 = getSeveralFeatures(access_token, trackID);
+			var danceability = 0;
+			var valence = 0;
+			for(var i = 0; i < data2.audio_features.length; i++) {
+				danceability += data2.audio_features[i].danceability;
+				valence += data2.audio_features[i].valence;
+			}
+			danceability = danceability / data2.audio_features.length;
+			danceability *= 100;
+			valence = valence / data2.audio_features.length;
+			valence *= 100;
+			
+			danceability = +danceability.toFixed(1);
+			valence = +valence.toFixed(1);
+		   
 			data = response;
+			data["danceability"] = danceability;
+			data["valence"] = valence;
+		    data["avgpop"] = pop;
+			
+			
+			$(newTemplate).html(template(response));
+
 //		    sessionStorage.setItem("topTracksShort", JSON.stringify(response));
 		}
 	});

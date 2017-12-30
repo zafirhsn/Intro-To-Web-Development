@@ -79,19 +79,19 @@
       </button>
       
 		<!--Logo/Brand link on right side of screen-->
-      <a class="navbar-brand" href="home.html">Spotify Analytics</a>
+      <a class="navbar-brand" href="index.html">Statify</a>
 
 		<!--Expanded navbar-->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
          <li class="nav-item"> 
-         	<a class="nav-link" href="home.html">Home</a>
+         	<a class="nav-link" href="index.html">Home</a>
          </li>
           <li class="nav-item">
-            <a class="nav-link" href="todays_music.html">Your Artists</a>
+            <a class="nav-link" href="your_artists.html">Your Artists</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="your_music.html">Your Tracks</a>
+            <a class="nav-link" href="your_tracks.html">Your Tracks</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
@@ -274,13 +274,15 @@
 		<p style="font-size: 50px">{{avgpop}}</p>  
 	</script>
 	
-	<script id="features-template" type="text/x-handlebars">
-		<p style="font-size: 50px">{{feature}}</p>  
-	</script>	
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+	<script id="danceability-template" type="text/x-handlebars">
+		<p style="font-size: 50px">{{danceability}}</p>  
+	</script>
+		
+	<script id="valence-template" type="text/x-handlebars">
+		<p style="font-size: 50px">{{valence}}</p>  
+	</script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="data.js"></script>
 
     <script>
 		
@@ -294,13 +296,15 @@
 			var topTracks = $("#top-tracks-template").html();
 			var topArtists = $("#top-artists-template").html();
 			var avgPopTemplate = $("#pop-template").html();
-			var features = $("#features-template").html();
+			var dance = $("#danceability-template").html();
+			var val = $("#valence-template").html();
 
 			//Compile templates
 			var tracksTemplate = Handlebars.compile(topTracks);
 			var artistTemplate = Handlebars.compile(topArtists);
 			var popTemplate = Handlebars.compile(avgPopTemplate);
-			var featuresTemplate = Handlebars.compile(features);
+			var danceTemplate = Handlebars.compile(dance);
+			var valenceTemplate = Handlebars.compile(val);
 			
 			//ID of new templates to be filled
 			var tracksLongID = "#top-tracks-long";
@@ -336,6 +340,18 @@
 				tMedRes = JSON.parse(sessionStorage.getItem("topTracksMed"));
 				tShortRes = JSON.parse(sessionStorage.getItem("topTracksShort"));
 				
+				$(popLongID).html(popTemplate(tLongRes));
+				$(danceLongID).html(danceTemplate(tLongRes));
+				$(valLongID).html(valenceTemplate(tLongRes));
+				
+				$(popMedID).html(popTemplate(tMedRes));
+				$(danceMedID).html(danceTemplate(tMedRes));
+				$(valMedID).html(valenceTemplate(tMedRes));
+				
+				$(popShortID).html(popTemplate(tShortRes));
+				$(danceShortID).html(danceTemplate(tShortRes));
+				$(valShortID).html(valenceTemplate(tShortRes));
+				
 			}
 			else {
 				console.log("Session storage is not empty so we won't make more requests");
@@ -347,101 +363,24 @@
 				$(tracksLongID).html(tracksTemplate(tLongRes));
 				$(tracksMedID).html(tracksTemplate(tMedRes));
 				$(tracksShortID).html(tracksTemplate(tShortRes));
+				
+				$(popLongID).html(popTemplate(tLongRes));
+				$(danceLongID).html(danceTemplate(tLongRes));
+				$(valLongID).html(valenceTemplate(tLongRes));
+				
+				$(popMedID).html(popTemplate(tMedRes));
+				$(danceMedID).html(danceTemplate(tMedRes));
+				$(valMedID).html(valenceTemplate(tMedRes));
+				
+				$(popShortID).html(popTemplate(tShortRes));
+				$(danceShortID).html(danceTemplate(tShortRes));
+				$(valShortID).html(valenceTemplate(tShortRes));
+			
+				
 			}
-			
-			var longID = "";
-			var avgPop = 0;
-			for(var i = 0; i < tLongRes.items.length; i++) {
-				console.log(tLongRes.items[i].popularity);
-				avgPop += tLongRes.items[i].popularity;
-				longID += tLongRes.items[i].id + ',';
-			}
-			avgPop = avgPop / tLongRes.items.length;
-			var popLongRes = {avgpop: avgPop};
-			$(popLongID).html(popTemplate(popLongRes));
-			
-			var longFeatures = getSeveralFeatures(access_token, longID);
-			var longDance = 0;
-			var longVal = 0;
-			for(var i = 0; i < longFeatures.audio_features.length; i++) {
-				longDance += longFeatures.audio_features[i].danceability;
-				longVal += longFeatures.audio_features[i].valence;
-			}	
-			longDance = longDance / longFeatures.audio_features.length;
-			longDance *= 100;
-			longVal = longVal / longFeatures.audio_features.length;
-			longVal *= 100;
-			longVal = +longVal.toFixed(1);
-			
-			var longDanceRes = {feature: longDance};
-			var longValRes = {feature: longVal};
-			$(danceLongID).html(featuresTemplate(longDanceRes));
-			$(valLongID).html(featuresTemplate(longValRes));
-			
-			
-			
-			var medID = "";
-			avgPop = 0;
-			for(var i = 0; i < tMedRes.items.length; i++) {
-				console.log(tMedRes.items[i].popularity);
-				avgPop += tMedRes.items[i].popularity;
-				medID += tMedRes.items[i].id + ',';
-			}
-			avgPop = avgPop / tMedRes.items.length;
-			var popMedRes = {avgpop: avgPop};
-			getSeveralFeatures(access_token, medID);
-			$(popMedID).html(popTemplate(popMedRes));
-			
-			var medFeatures = getSeveralFeatures(access_token, medID);
-			var medDance = 0;
-			var medVal = 0;
-			for(var i = 0; i < medFeatures.audio_features.length; i++) {
-				medDance += medFeatures.audio_features[i].danceability;
-				medVal += medFeatures.audio_features[i].valence;
-			}
-			medDance = medDance / medFeatures.audio_features.length;
-			medDance *= 100;
-			medVal = medVal / medFeatures.audio_features.length;
-			medVal *= 100;
-			medVal = +medVal.toFixed(1);
-			
-			var medDanceRes = {feature: medDance}; 
-			var medValRes = {feature: medVal};
-			$(danceMedID).html(featuresTemplate(medDanceRes));
-			$(valMedID).html(featuresTemplate(medValRes));
-			
-			
-			
-			var shortID = "";
-			avgPop = 0;
-			for(var i = 0; i < tShortRes.items.length; i++) {
-				console.log(tShortRes.items[i].popularity);
-				avgPop += tShortRes.items[i].popularity;
-				shortID += tShortRes.items[i].id + ',';
-			}
-			avgPop = avgPop / tShortRes.items.length;
-			var popShortRes = {avgpop: avgPop};
-			getSeveralFeatures(access_token, shortID);
-			$(popShortID).html(popTemplate(popShortRes));
-			
-			
-			var shortFeatures = getSeveralFeatures(access_token, shortID);
-			var shortDance = 0;
-			var shortVal = 0;
-			for(var i = 0; i < shortFeatures.audio_features.length; i++) {
-				shortDance += shortFeatures.audio_features[i].danceability;
-				shortVal += shortFeatures.audio_features[i].valence;
-			}
-			shortDance = shortDance / shortFeatures.audio_features.length;
-			shortDance *= 100;
-			shortVal = shortVal / shortFeatures.audio_features.length;
-			shortVal *= 100;
-			shortVal = +shortVal.toFixed(1);
-			var shortDanceRes = {feature: shortDance}; 
-			var shortValRes = {feature: shortVal};
-			$(danceShortID).html(featuresTemplate(shortDanceRes));
-			$(valShortID).html(featuresTemplate(shortValRes));
-			
+
+
+
 
 			
 			
@@ -456,6 +395,10 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="data.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+	
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   </body>
