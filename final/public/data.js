@@ -255,6 +255,51 @@ function getSavedSongs(access_token) {
 }
 
 
+//GET A USER'S RECENTLY PLAYED TRACKS
+function getRecentTracks(access_token, after) {
+	$.ajax({
+		url: 'https://api.spotify.com/v1/me/player/recently-played?type=track&after=' + after + '&limit=10',
+		headers: {
+			'Authorization': 'Bearer ' + access_token
+		},
+		success: function(response) {
+		  console.log("PRINTING response from recently played tracks");
+		  console.log(response);
+			
+			
+			var trackID = "";
+			var pop = 0;
+			for(var i = 0; i < response.items.length; i++) {
+				trackID += response.items[i].track.id + ',';
+				pop += response.items[i].track.popularity;
+			}
+			pop = pop / response.items.length;
+			pop = +pop.toFixed(1);
+
+			var data2 = getSeveralFeatures(access_token, trackID);
+			var danceability = 0;
+			var valence = 0;
+			for(var i = 0; i < data2.audio_features.length; i++) {
+				danceability += data2.audio_features[i].danceability;
+				valence += data2.audio_features[i].valence;
+			}
+			danceability = danceability / data2.audio_features.length;
+			danceability *= 100;
+			valence = valence / data2.audio_features.length;
+			valence *= 100;
+
+			danceability = +danceability.toFixed(1);
+			valence = +valence.toFixed(1);
+
+			data = response;
+			data["danceability"] = danceability;
+			data["valence"] = valence;
+			data["avgpop"] = pop;
+	 	
+		}
+	});
+}
+
 // function getTopArtistsLong(access_token) {
 // 	var avgPop = 0;
 // 	$.ajax({

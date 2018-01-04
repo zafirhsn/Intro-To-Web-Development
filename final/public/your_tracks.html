@@ -352,6 +352,9 @@
 				$(danceShortID).html(danceTemplate(tShortRes));
 				$(valShortID).html(valenceTemplate(tShortRes));
 				
+				var after = new Date("December 10, 2017 11:13:00").getTime();
+				getRecentTracks(access_token, after);
+				
 			}
 			else {
 				console.log("Session storage is not empty so we won't make more requests");
@@ -376,7 +379,8 @@
 				$(danceShortID).html(danceTemplate(tShortRes));
 				$(valShortID).html(valenceTemplate(tShortRes));
 			
-				
+				var after = new Date("December 10, 2017 11:13:00").getTime();
+				getRecentTracks(access_token, after);
 			}
 
 

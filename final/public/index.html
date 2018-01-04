@@ -76,6 +76,25 @@
 			-o-animation: fadeIn 1.5s linear;
 			animation: fadeIn 1.5s linear;
 		}
+		
+		#login-button {
+			border-radius: 30px;
+		}
+		
+		#login {
+			display: none;
+		}
+		
+		@media screen and (max-width: 600) {
+			.btn {
+				width: 100%;
+			}
+		}
+		
+		.btn {
+			width: 60%;
+		}
+
 					
 
     </style>
@@ -149,7 +168,7 @@
        	<div class ="col" align="center">
        		<br>
        		<br>
-        	<button id="login-button" class="btn-lg btn-success" data-target="button">Connect to Spotify</button>
+        	<button type="button" id="login-button" class="btn btn-success btn-lg" data-target="button">Connect to Spotify</button>
         	<br>
         	<br>
         	<br>	
@@ -199,7 +218,7 @@
 	  </div> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      
     <script>
 //		(function() {
@@ -262,10 +281,10 @@
           
 			document.getElementById('login-button').addEventListener('click', function() {
             var client_id = 'd4557495633b429a85292698a89e5978'; // Your client id
-            var redirect_uri = 'http://www.zafirhasan.com'; // Your redirect uri
+            var redirect_uri = 'http://localhost:8888/index.html'; // Your redirect uri
             var state = generateRandomString(16);
             localStorage.setItem(stateKey, state);	//set the stateKey as the random string state
-            var scope = 'user-read-private user-read-email user-read-birthdate user-top-read user-library-read playlist-read-private';
+            var scope = 'user-read-private user-read-email user-read-birthdate user-top-read user-library-read user-read-recently-played';
             var url = 'https://accounts.spotify.com/authorize';
             url += '?response_type=token';
             url += '&client_id=' + encodeURIComponent(client_id);
