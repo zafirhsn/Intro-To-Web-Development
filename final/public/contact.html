@@ -11,8 +11,20 @@
     
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 	<script src="https://use.fontawesome.com/776285c95e.js"></script>
-   
+   	<link rel="icon" type="image/png" href="bar-chart.png">
+   	
     <style type="text/css">
+		html {
+			margin: 0;	
+			height: 100%;
+		}
+		
+		@media screen and (max-height: 775px) {
+			html {
+				height: auto;
+			}
+		}
+		
     	div.container-fluid, nav {
 			font-size: 20px;
 			font-weight:400;
@@ -20,9 +32,14 @@
     	}
 		
 		body {
-			background-image: url("purple-black.png");
+			background: #ffa500;
+			background: -moz-linear-gradient(-45deg, #ffa500 0%, #38d7ff 100%);
+			background: -webkit-linear-gradient(-45deg, #ffa500 0%,#38d7ff 100%);
+			background: linear-gradient(135deg, #ffa500 0%,#38d7ff 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa500', endColorstr='#38d7ff',GradientType=1 );
 			font-family: 'Roboto', sans-serif;
 			color: #fff;
+			
 		}
 		
 		.title {
@@ -54,6 +71,28 @@
 			height:100px; 
 		}
 		
+		.nav-link:hover {
+			border-radius: 10px;
+			background-color: #5B00BA;
+			color: #fff;
+		}
+		
+		.nav-item {
+			margin-left: 3px;
+			margin-top: 5px;
+		}
+		
+		.active {
+			background-color: #5B00BA;
+		}
+		
+		@media screen and (max-width: 576px) {
+			#nav {
+				background-color: #222;
+				opacity: 0.85;
+			}
+		}
+		
 
 
     </style>
@@ -61,8 +100,8 @@
   <body>
 	
   	
-   	<!--Standard bootsstrap nav-->
-    <nav class="p-3 navbar sticky-top navbar-expand-sm navbar-dark" style="background-color: #222;">
+	<!--Standard bootsstrap nav-->
+    <nav class="navbar sticky-top navbar-expand-sm navbar-dark" id ="nav" style="background-color: #">
       
       <!-- Hamburger button -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,22 +110,22 @@
       </button>
       
 		<!--Logo/Brand link on right side of screen-->
-      <a class="navbar-brand" href="index.html">Statify</a>
+      <a class="navbar-brand" href="index.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Statify</a>
 
 		<!--Expanded navbar-->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-         <li class="nav-item"> 
-         	<a class="nav-link" href="index.html">Home</a>
+         <li class="nav-item">  
+         	<a class="nav-link" href="index.html" style="padding-left: 5px; text-align: center; color: #fff">Home</a>
          </li>
           <li class="nav-item">
-            <a class="nav-link" href="your_artists.html">Your Artists</a>
+            <a class="nav-link" href="your_artists.html" style="padding-left: 5px; text-align: center; color: #fff">Your Artists</a> 
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="your_tracks.html">Your Tracks</a>
+            <a class="nav-link" href="your_tracks.html" style="padding-left: 5px; text-align: center; color: #fff">Your Tracks</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="contact.html">Contact</a>
+          <li class="nav-item active" style="border-radius: 10px">
+            <a class="nav-link" href="contact.html" style="padding-left: 5px; text-align: center; color: #fff">Contact</a>
           </li>
         </ul>
       </div>
