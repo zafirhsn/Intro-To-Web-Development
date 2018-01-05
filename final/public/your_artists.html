@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 	<link rel="icon" type="image/png" href="bar-chart.png">
    
-    <script src="https://use.fontawesome.com/776285c95e.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style type="text/css">
 		
     	div.container-fluid, nav {
@@ -91,6 +91,8 @@
 				opacity: 0.85;
 			}
 		}
+		
+		
 
 
     </style>
@@ -131,15 +133,10 @@
     <div class="container">
     	<div class="row">
     		<div class="col title" align="center">
-				<p>Your Artists</p>
+				<p id="page-heading">Your Artists</p>
     		</div>
     		
     	</div>
-     	<div class="row">
-    		<div class="col description" align="center">
-				<p>See Your Top Artists</p>
-    		</div>
-    	</div> 
  <!--    	<div class="row my-5">
 			<div class="col" align="center">
 				<form>
@@ -156,7 +153,7 @@
   			<div class="col">
   				<br>
   				<h1>Top Artists of All Time</h1>
-  					<ol id="top-artists-long" class="animation">
+  					<ol id="top-artists-long">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>	
 					</ol>	
@@ -166,7 +163,7 @@
   			<div class="col">
   				<br>
   				<h1>Top Artists From The Last 6 Months</h1>
-  					<ol id="top-artists-med" class="animation">
+  					<ol id="top-artists-med">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>	
 					</ol>	
@@ -176,7 +173,7 @@
   			<div class="col">
   				<br>
   				<h1>Top Artists From The Last 4 Weeks</h1>
-  					<ol id="top-artists-short" class="animation">
+  					<ol id="top-artists-short">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>	
 					</ol>	
@@ -186,7 +183,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Popularity of your Top Artists</h1>
-  					<ul id="average-pop-long" class="animation">
+  					<ul id="average-pop-long">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>							
 					</ul>	
@@ -196,7 +193,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Popularity of your Top Artists From The Last 6 Months</h1>
-  					<ul id="average-pop-med" class="animation">
+  					<ul id="average-pop-med">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>						
 					</ul>	
@@ -206,7 +203,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Popularity of your Top Artists From The Last 4 Weeks</h1>
-  					<ul id="average-pop-short" class="animation">
+  					<ul id="average-pop-short">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>							
 					</ul>	
@@ -277,6 +274,10 @@
 				aLongRes = JSON.parse(sessionStorage.getItem("topArtistsLong"));
 				aMedRes = JSON.parse(sessionStorage.getItem("topArtistsMed"));
 				aShortRes = JSON.parse(sessionStorage.getItem("topArtistsShort"));
+				
+				$("#top-artists-long").slideDown();
+				$("#top-artists-med").hide().slideDown();
+				$("#top-artists-short").hide().slideDown();
 
 			}
 			else {
@@ -289,6 +290,10 @@
 				$(artistsLongID).html(artistTemplate(aLongRes));
 				$(artistsMedID).html(artistTemplate(aMedRes));
 				$(artistsShortID).html(artistTemplate(aShortRes));
+				
+				$("#top-artists-long").hide().slideDown();
+				$("#top-artists-med").hide().slideDown();
+				$("#top-artists-short").hide().slideDown();
 			}
 			
 			var avgPop = 0;

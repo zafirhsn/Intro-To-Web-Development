@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
-	<script src="https://use.fontawesome.com/776285c95e.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
    	<link rel="icon" type="image/png" href="bar-chart.png">
    	
     <style type="text/css">
@@ -32,11 +32,11 @@
     	}
 		
 		body {
-			background: #ffa500;
-			background: -moz-linear-gradient(-45deg, #ffa500 0%, #38d7ff 100%);
-			background: -webkit-linear-gradient(-45deg, #ffa500 0%,#38d7ff 100%);
-			background: linear-gradient(135deg, #ffa500 0%,#38d7ff 100%);
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa500', endColorstr='#38d7ff',GradientType=1 );
+			background: #5b00ba; /* Old browsers */
+			background: -moz-linear-gradient(45deg, #5b00ba 0%, #c57e14 90%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(45deg, #5b00ba 0%,#c57e14 90%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(45deg, #5b00ba 0%, #c57e14 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b00ba', endColorstr='#c57e14',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 			font-family: 'Roboto', sans-serif;
 			color: #fff;
 			
@@ -134,31 +134,11 @@
     <div class="container">
     	<div class="row mb-5">
     		<div class="col title" align="center">
-    			<p>Contact</p>
+    			<p id="page-heading">Contact</p>
     		</div>
     	</div>
     	<div class="row">
-    		
-    		<div class="col">
-				<p>Here is some of the music I love listening to!</p>
-				<br>
-
-				<h3>Top Track</h3>
-				<p>Tap Out by the Strokes</p>
-				<img src="the_strokes.jpg" alt="The Strokes RCA Album cover" class="rounded">
-
-				<br>
-				<br>
-				<h3>Top Artist</h3>
-				<p>Kendrick Lamar</p>
-				<img src="kendrick.jpg" alt="Kendrick Lamar" class="rounded">
-   				<br>
-    			<br>	
-    			<h3>Top Genre</h3>
-    			<p>Indietronica</p>
-			</div>
-    			
-    		<div class="col">
+    		<div class="col-md">
 				<form>
 					<div class="form-row">
 						<div class="col">
@@ -178,7 +158,7 @@
 						<div class="col">
 							<div class="form-group">
 								<label for="message">Message</label>
-								<textarea class="form-control" id="message" rows="10" placeholder="Send me some feedback"></textarea>
+								<textarea class="form-control" id="message" rows="15" placeholder="Send me some feedback"></textarea>
 							</div>
 						</div>
 					</div>
@@ -205,7 +185,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
+		$(document).ready(function() {
+			$("#page-heading").hide().slideDown();		  
 		
+						  
+		});
 		
 	  
 	</script>

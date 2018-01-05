@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 	<link rel="icon" type="image/png" href="bar-chart.png">
    
-    <script src="https://use.fontawesome.com/776285c95e.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style type="text/css">
 		
         div.container-fluid, nav {
@@ -141,12 +141,7 @@
 			<p>Your Charts</p>
 		</div>
 
-	</div>
-	<div class="row">
-		<div class="col description" align="center">
-			<p>See Your Top Tracks</p>
-		</div>
-	</div> 	
+	</div>	
 	</div>
   	
   	<div class="container">
@@ -154,7 +149,7 @@
   			<div class="col">
   				<br>
   				<h1>Top Tracks of All Time</h1>
-					<ol id="top-tracks-long" class="animation">
+					<ol id="top-tracks-long">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>
 					</ol>
@@ -164,7 +159,7 @@
   			<div class="col">
 				<br>
 				<h1>Top Tracks From the Last 6 Months</h1>
-					<ol id="top-tracks-med" class="animation">
+					<ol id="top-tracks-med">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>
 					</ol>
@@ -174,7 +169,7 @@
   			<div class="col">
   				<br>
   				<h1>Top Tracks From the Last 4 Weeks</h1>
-  					<ol id="top-tracks-short" class="animation">
+  					<ol id="top-tracks-short">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>
 					</ol>	
@@ -184,7 +179,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Popularity of your Top Tracks</h1>
-  					<ul id="average-pop-long" class="animation">
+  					<ul id="average-pop-long">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>					
 					</ul>	
@@ -194,7 +189,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Popularity of your Top Tracks From The Last 6 Months</h1>
-  					<ul id="average-pop-med" class="animation">
+  					<ul id="average-pop-med">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>					
 					</ul>	
@@ -204,7 +199,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Popularity of your Top Tracks From The Last 4 Weeks</h1>
-  					<ul id="average-pop-short" class="animation">
+  					<ul id="average-pop-short">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>					
 					</ul>	
@@ -214,7 +209,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Danceability of Your Top Tracks</h1>
-  					<ul id="danceable-long" class="animation">
+  					<ul id="danceable-long">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>							
 					</ul>	
@@ -224,7 +219,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Danceability of Your Top Tracks From the Last 6 Months</h1>
-  					<ul id="danceable-med" class="animation">
+  					<ul id="danceable-med">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>					
 					</ul>	
@@ -234,7 +229,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Danceability of Your Top Tracks From the Last 4 Weeks</h1>
-  					<ul id="danceable-short" class="animation">
+  					<ul id="danceable-short">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>					
 					</ul>	
@@ -244,7 +239,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Happiness of Your Top Tracks</h1>
-  					<ul id="valence-long" class="animation">
+  					<ul id="valence-long">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>					
 					</ul>	
@@ -254,7 +249,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Happiness of Your Top Tracks From The Last 6 Months</h1>
-  					<ul id="valence-med" class="animation">
+  					<ul id="valence-med">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>					
 					</ul>	
@@ -264,7 +259,7 @@
   			<div class="col">
   				<br>
   				<h1>Average Happiness of Your Top Tracks From The Last 4 Weeks</h1>
-  					<ul id="valence-short" class="animation">
+  					<ul id="valence-short">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>							
 					</ul>	
@@ -391,6 +386,7 @@
 				$(danceLongID).html(danceTemplate(tLongRes));
 				$(valLongID).html(valenceTemplate(tLongRes));
 				
+				
 				$(popMedID).html(popTemplate(tMedRes));
 				$(danceMedID).html(danceTemplate(tMedRes));
 				$(valMedID).html(valenceTemplate(tMedRes));
@@ -398,6 +394,19 @@
 				$(popShortID).html(popTemplate(tShortRes));
 				$(danceShortID).html(danceTemplate(tShortRes));
 				$(valShortID).html(valenceTemplate(tShortRes));
+				
+				$(tracksLongID).hide().slideDown();
+				$(tracksMedID).hide().slideDown();
+				$(tracksShortID).hide().slideDown();
+				$(danceLongID).hide().slideDown();
+				$(danceMedID).hide().slideDown();
+				$(danceShortID).hide().slideDown();
+				$(popLongID).hide().slideDown();
+				$(popMedID).hide().slideDown();
+				$(popShortID).hide().slideDown();
+				$(valLongID).hide().slideDown();
+				$(valMedID).hide().slideDown();
+				$(valShortID).hide().slideDown();
 				
 				var after = new Date("December 10, 2017 11:13:00").getTime();
 				getRecentTracks(access_token, after);
@@ -425,9 +434,22 @@
 				$(popShortID).html(popTemplate(tShortRes));
 				$(danceShortID).html(danceTemplate(tShortRes));
 				$(valShortID).html(valenceTemplate(tShortRes));
-			
+				
+				$(tracksLongID).hide().slideDown();
+				$(tracksMedID).hide().slideDown();
+				$(tracksShortID).hide().slideDown();
+				$(danceLongID).hide().slideDown();
+				$(danceMedID).hide().slideDown();
+				$(danceShortID).hide().slideDown();
+				$(popLongID).hide().slideDown();
+				$(popMedID).hide().slideDown();
+				$(popShortID).hide().slideDown();
+				$(valLongID).hide().slideDown();
+				$(valMedID).hide().slideDown();
+				$(valShortID).hide().slideDown();
+				
 				var after = new Date("December 10, 2017 11:13:00").getTime();
-				getRecentTracks(access_token, after);
+				//getRecentTracks(access_token, after);
 			}
 
 
