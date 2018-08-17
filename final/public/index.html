@@ -1,153 +1,56 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Statify</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<head>
+		<title>Statify | Your Music in Numbers</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="Keywords" content="Zafir Hasan,Zafir,Developer,Designer,Front-End Developer,UI,NYU,New York,Spotify,Statify,music,spotify,statify">
+		<meta name="author" content="=Zafir Hasan">
+		<meta name="description" content="View all your Spotify listening statistics in one site">
+		<!-- Allows googles web crawler (Googlebot) to find and index my site, this is the default value, but I want to be able to see it-->
+		<meta name="robots" content="index">
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
-    <link rel="icon" type="image/png" href="bar-chart.png">
-    
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<!--Style sheet from Google Fonts-->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+		
+		<!--Font awesome CSS-->
+		<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+		
+		<!--Base style sheet-->
+		<link href="main.css" rel="stylesheet" type="text/css">
+		
+		<!--Page style sheet-->
+		<link href="index.css" rel="stylesheet" type="text/css">
+		
+		
+		<!--Favicon-->
+		<link rel="icon" type="image/png" href="bar-chart.png">
+
+
 
     <style type="text/css">
-		html {
-			margin: 0;
-			height: 100%;
-		}
+	
 		
 		
-		@media screen and (max-height: 775px) {
-			html {
-				height: auto;
-			}
-		}
-		
-		
-    	div.container-fluid, nav {
-			font-size: 20px;
-			font-weight: 400;	
-    	}
-		
-		body {
-			/*background-color: #000000;*/
-      		/*#5B00BA*/
-			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5b00ba+0,c57e14+100 */
-			background: #5b00ba; /* Old browsers */
-			background: -moz-linear-gradient(45deg, #5b00ba 0%, #c57e14 90%); /* FF3.6-15 */
-			background: -webkit-linear-gradient(45deg, #5b00ba 0%,#c57e14 90%); /* Chrome10-25,Safari5.1-6 */
-			background: linear-gradient(45deg, #5b00ba 0%, #c57e14 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5b00ba', endColorstr='#c57e14',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-			font-family: 'Roboto', sans-serif;
-			color:#fff;
-			
-    	}
-
-
-		li.nav-item:hover {
-	 /*background-color: #FFF !important;*/
-		}
-		
-		.nav-link:hover {
-/*			color:#5B00BA !important;*/
-		}
-		
-		.home-title {
-			font-size: 70px;
-			margin-top: 5%;
-		}
-		
-		.home-descrip {
-			font-size: 40px;
-		}
-		
-		.home-list {
-			font-size: 20px;
-		}
-		
-		#loggedin {
-			font-size: 70px;
-		}
-		
-		@-webkit-keyframes fadeIn {
-			0% {
-				opacity: 0;
-			}
-			50% {
-				opacity: 0.5;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
-
-		.animation {
-			-webkit-animation: fadeIn 1.5s linear;
-			-moz-animation: fadeIn 1.5s linear;
-			-o-animation: fadeIn 1.5s linear;
-			animation: fadeIn 1.5s linear;
-		}
-		
-		#login-button {
-			border-radius: 30px;
-		}
-		
-		#login {
-			display: none;
-		}
-		
-		@media screen and (max-width: 600) {
-			.btn {
-				width: 100%;
-			}
-		}
-		
-		.btn {
-			width: 60%;
-		}
-		
-		
-		.nav-link:hover {
-			border-radius: 10px;
-			background-color: #5B00BA;
-			color: #fff;
-		}
-		
-		.nav-item {
-			margin-left: 3px;
-			margin-top: 5px;
-		}
-		
-		.active {
-			background-color: #5B00BA;
-		}
-		
-		@media screen and (max-width: 576px) {
-			#nav {
-				background-color: #222;
-				opacity: 0.85;
-			}
-		}
-					
 
     </style>
+    
   </head>
+  
+  
   <body>
 	<!--Standard bootsstrap nav-->
     <nav class="navbar sticky-top navbar-expand-sm navbar-dark" id ="nav" style="background-color: #">
       
       <!-- Hamburger button -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		<!-- Hamburger icon -->
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a href="#" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <i class="fas fa-bars fa-fw fa-2x"></i></a>
       
 		<!--Logo/Brand link on right side of screen-->
-      <a class="navbar-brand" href="index.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Statify</a>
+      <a class="navbar-brand" href="index.html"><i class="fas fa-chart-bar" aria-hidden="true"></i> Statify</a>
 
 		<!--Expanded navbar-->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -173,7 +76,7 @@
       <div class="row">
       	<div class="col home-title" align="center">
       		<i class="fa fa-bar-chart" aria-hidden="true"></i>
-			<p>Welcome to Statify</p>
+			<p>Statify</p>
 		</div>
 	  </div>
      
@@ -320,7 +223,7 @@
           
 			document.getElementById('login-button').addEventListener('click', function() {
             var client_id = 'd4557495633b429a85292698a89e5978'; // Your client id
-            var redirect_uri = 'http://localhost:8888/index.html'; // Your redirect uri
+            var redirect_uri = 'http://www.zafirhasan.com/Statify'; // Your redirect uri
             var state = generateRandomString(16);
             localStorage.setItem(stateKey, state);	//set the stateKey as the random string state
             var scope = 'user-read-private user-read-email user-read-birthdate user-top-read user-library-read user-read-recently-played';
@@ -434,8 +337,51 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    
+    
+    <footer>
+    	<div class="container">
+			<div class="row justify-content-center py-2">
+				<div class = "col top-row"> 
+					<a href="index.html" class="footer-link">Home</a>
+				</div>
+				<div class="col top-row"> 
+					<a href="about.html" class="footer-link">Your Artists</a>
+				</div>
+				<div class="col top-row">
+					<a href="projects.html" class="footer-link">Your Tracks</a>
+				</div>
+				<div class="col top-row">
+					<a href="contact.html" class="footer-link">Contact</a>
+				</div>
+			</div>
+			
+			<div class="row justify-content-center py-2">
+				<div class="col-auto">
+					<a href="#"><i class="fab fa-github fa-2x fa-fw logo-img"></i></a>
+					
+				</div>
+				<div class="col-auto">
+					<a href="#"><i class="fab fa-linkedin fa-2x fa-fw logo-img"></i></a>
+				</div>
+			</div>
+			
+			<div class="row justify-content-center py-2 bottom-row">
+				<div class="col-auto">
+					<span class="footer-text">&copy; Copyright 2018. All rights reserved.</span>
+				</div>
+				<div class="col-auto"> 
+					<a href="#" class="footer-link footer-text">Sitemap</a>
+				</div>
+				<div class="col-auto">
+					<span class="footer-text">Contact me: zh754@nyu.edu</span>
+				</div>			
+			</div>
+			
+		</div>
+    	
+    </footer>
   </body>
 </html>

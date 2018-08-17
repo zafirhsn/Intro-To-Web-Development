@@ -97,7 +97,9 @@
 				background-color: #222;
 				opacity: 0.85;
 			}
+			
 		}
+		
 		
 
     </style>
@@ -136,7 +138,7 @@
     </nav>
     
 	<div class="container">
-	<div class="row">
+	<div class="row" align="center">
 		<div class="col title" align="center">
 			<p>Your Charts</p>
 		</div>
@@ -145,18 +147,18 @@
 	</div>
   	
   	<div class="container">
-  		<div class="row">
-  			<div class="col">
+  		<div class="row" align="center">
+  			<div class="col mt-5">
   				<br>
   				<h1>Top Tracks of All Time</h1>
-					<ol id="top-tracks-long">
+					<div id="top-tracks-long" class="col">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>
-					</ol>
+					</div>
   			</div>
   		</div>
-  		<div class="row">
-  			<div class="col">
+  		<div class="row" align="center">
+  			<div class="col mt-5">
 				<br>
 				<h1>Top Tracks From the Last 6 Months</h1>
 					<ol id="top-tracks-med">
@@ -165,17 +167,17 @@
 					</ol>
 			</div>
   		</div>
-  		<div class="row">
-  			<div class="col">
+  		<div class="row" align="center">
+  			<div class="col mt-5">
   				<br>
-  				<h1>Top Tracks From the Last 4 Weeks</h1>
+  				<h1>Top Tracks From the Last Month</h1>
   					<ol id="top-tracks-short">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>
 					</ol>	
   			</div>
   		</div>
-  		<div class="row">
+  		<div class="row mt-5">
   			<div class="col">
   				<br>
   				<h1>Average Popularity of your Top Tracks</h1>
@@ -198,7 +200,7 @@
    		<div class="row">
   			<div class="col">
   				<br>
-  				<h1>Average Popularity of your Top Tracks From The Last 4 Weeks</h1>
+  				<h1>Average Popularity of your Top Tracks From The Last Month</h1>
   					<ul id="average-pop-short">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>					
@@ -228,7 +230,7 @@
   		<div class="row">
   			<div class="col">
   				<br>
-  				<h1>Average Danceability of Your Top Tracks From the Last 4 Weeks</h1>
+  				<h1>Average Danceability of Your Top Tracks From the Last Month</h1>
   					<ul id="danceable-short">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>					
@@ -258,7 +260,7 @@
  		<div class="row">
   			<div class="col">
   				<br>
-  				<h1>Average Happiness of Your Top Tracks From The Last 4 Weeks</h1>
+  				<h1>Average Happiness of Your Top Tracks From The Last Month</h1>
   					<ul id="valence-short">
 						<i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 						<span class="sr-only">Loading...</span>							
@@ -287,29 +289,25 @@
   		
 
   	<script id="top-tracks-template" type="text/x-handlebars">
-		<li>{{items.0.name}} by {{items.0.artists.0.name}}</li>
-		<li>{{items.1.name}} by {{items.1.artists.0.name}}</li>
-		<li>{{items.2.name}} by {{items.2.artists.0.name}}</li>
-		<li>{{items.3.name}} by {{items.3.artists.0.name}}</li>
-		<li>{{items.4.name}} by {{items.4.artists.0.name}}</li>
-		<li>{{items.5.name}} by {{items.5.artists.0.name}}</li>
-		<li>{{items.6.name}} by {{items.6.artists.0.name}}</li>
-		<li>{{items.7.name}} by {{items.7.artists.0.name}}</li>
-		<li>{{items.8.name}} by {{items.8.artists.0.name}}</li>
-		<li>{{items.9.name}} by {{items.9.artists.0.name}}</li>   		
-    </script>
-    
-    <script id="top-artists-template" type="text/x-handlebars">
-		<li>{{items.0.name}}</li>
-		<li>{{items.1.name}}</li>
-		<li>{{items.2.name}}</li>
-		<li>{{items.3.name}}</li>
-		<li>{{items.4.name}}</li>
-		<li>{{items.5.name}}</li>
-		<li>{{items.6.name}}</li>
-		<li>{{items.7.name}}</li>
-		<li>{{items.8.name}}</li>
-		<li>{{items.9.name}}</li>   		
+		<img src={{items.[0].album.images.[1].url}} class="rounded-circle mt-4" height="80px"><p style="display: inline" class="ml-4">1. {{items.0.name}} by {{items.0.artists.0.name}}</p>
+		<div class="col"> </div>
+		<img src={{items.[1].album.images.[1].url}} class="rounded-circle mt-4" height="80px"><p style="display: inline" class="ml-4">2. {{items.1.name}} by {{items.1.artists.0.name}}</p>
+		<div class="col"> </div>
+		<img src={{items.[2].album.images.[1].url}} class="rounded-circle mt-4" height="80px"><p style="display: inline" class="ml-4">3. {{items.2.name}} by {{items.2.artists.0.name}}</p>
+		<div class="col"> </div>
+		<img src={{items.[3].album.images.[1].url}} class="rounded-circle mt-4" height="80px"><p style="display: inline" class="ml-4">4. {{items.3.name}} by {{items.3.artists.0.name}}</p>
+		<div class="col"> </div>
+		<img src={{items.[4].album.images.[1].url}} class="rounded-circle mt-4" height="80px"><p style="display: inline" class="ml-4">5. {{items.4.name}} by {{items.4.artists.0.name}}</p>
+		<div class="col"> </div>
+		<img src={{items.[5].album.images.[1].url}} class="rounded-circle mt-4" height="80px"><p style="display: inline" class="ml-4">6. {{items.5.name}} by {{items.5.artists.0.name}}</p>
+		<div class="col"> </div>
+		<img src={{items.[6].album.images.[1].url}} class="rounded-circle mt-4" height="80px"><p style="display: inline" class="ml-4">7. {{items.6.name}} by {{items.6.artists.0.name}}</p>
+		<div class="col"> </div>
+		<img src={{items.[7].album.images.[1].url}} class="rounded-circle mt-4" height="80px"><p style="display: inline" class="ml-4">8. {{items.7.name}} by {{items.7.artists.0.name}}</p>
+		<div class="col"> </div>
+		<img src={{items.[8].album.images.[1].url}} class="rounded-circle mt-4" height="80px"><p style="display: inline" class="ml-4">9. {{items.8.name}} by {{items.8.artists.0.name}}</p>
+		<div class="col"> </div>
+		<img src={{items.[9].album.images.[1].url}} class="rounded-circle mt-4" height="80px"><p style="display: inline" class="ml-4">10. {{items.9.name}} by {{items.9.artists.0.name}}</p>   
     </script>
     
     <script id="pop-template" type="text/x-handlebars">
@@ -335,15 +333,13 @@
 			var access_token = sessionStorage.getItem('access_token');
 			
 			//Get inner html of templates
-			var topTracks = $("#top-tracks-template").html();
-			var topArtists = $("#top-artists-template").html();
+			var topTracks = $("#top-tracks-template").html();	
 			var avgPopTemplate = $("#pop-template").html();
 			var dance = $("#danceability-template").html();
 			var val = $("#valence-template").html();
 
 			//Compile templates
 			var tracksTemplate = Handlebars.compile(topTracks);
-			var artistTemplate = Handlebars.compile(topArtists);
 			var popTemplate = Handlebars.compile(avgPopTemplate);
 			var danceTemplate = Handlebars.compile(dance);
 			var valenceTemplate = Handlebars.compile(val);
@@ -395,7 +391,7 @@
 				$(danceShortID).html(danceTemplate(tShortRes));
 				$(valShortID).html(valenceTemplate(tShortRes));
 				
-				$(tracksLongID).hide().slideDown();
+				$(tracksLongID).hide().slideDown(800);
 				$(tracksMedID).hide().slideDown();
 				$(tracksShortID).hide().slideDown();
 				$(danceLongID).hide().slideDown();
@@ -435,11 +431,11 @@
 				$(danceShortID).html(danceTemplate(tShortRes));
 				$(valShortID).html(valenceTemplate(tShortRes));
 				
-				$(tracksLongID).hide().slideDown();
-				$(tracksMedID).hide().slideDown();
-				$(tracksShortID).hide().slideDown();
-				$(danceLongID).hide().slideDown();
-				$(danceMedID).hide().slideDown();
+				$(tracksLongID).hide().slideDown(600);
+				$(tracksMedID).hide().slideDown(600);
+				$(tracksShortID).hide().slideDown(600);
+				$(danceLongID).hide().slideDown(600);
+				$(danceMedID).hide().slideDown(600);
 				$(danceShortID).hide().slideDown();
 				$(popLongID).hide().slideDown();
 				$(popMedID).hide().slideDown();
