@@ -44,12 +44,11 @@ footer {
 .footer-link {
 	font-family: $base-sans-serif;
 	color: #FFF;
-}
-
-.footer-link:hover {
-	text-decoration: none;
-	color: #fff;
 	
+	&:hover {
+		text-decoration: none;
+		color: white;		
+	}
 }
 
 .footer-text {
@@ -62,11 +61,11 @@ footer {
 	color: white;
 	height: 30px;
 	width: 30px;
+	
+	&:hover {
+		color: white;		
+	}
 }
 
-/*
-.logo-img:hover {
-	color: black;
-}
-*/
+
 

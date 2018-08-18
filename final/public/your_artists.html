@@ -4,96 +4,33 @@
     <title>Your Artists</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="Keywords" content="Zafir Hasan,Zafir,Developer,Designer,Front-End Developer,UI,NYU,New York,Spotify,Statify,music,spotify,statify">
+	<meta name="author" content="=Zafir Hasan">
+	<meta name="description" content="View stats related to the artists that you listen to here">
+	<!-- Allows googles web crawler (Googlebot) to find and index my site, this is the default value, but I want to be able to see it-->
+	<meta name="robots" content="index">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+	<!--Style sheet from Google Fonts-->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+
+	<!--Font awesome CSS-->
+	<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+
+	<!--Base style sheet-->
+	<link href="main.css" rel="stylesheet" type="text/css">
+
+	<!--Page style sheet-->
+	<link href="your_artists.css" rel="stylesheet" type="text/css">
+	
+
+	<!--Favicon-->
 	<link rel="icon" type="image/png" href="bar-chart.png">
    
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style type="text/css">
 		
-    	div.container-fluid, nav {
-			font-size: 20px;
-			font-weight: 400;
-			
-    	}
-		
-		body {
-			background: #00a264;
-			background: -moz-linear-gradient(45deg, #00a264 10%, #8b00be 100%);
-			background: -webkit-linear-gradient(45deg, #00a264 10%,#8b00be 100%);
-			background: linear-gradient(45deg, #00a264 10%,#8b00be 100%);
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a264', endColorstr='#8b00be',GradientType=1 );
-/*			background-image: url("purple-green.png");*/
-			font-family: 'Roboto', sans-serif;
-		}
-		
-		.title {
-			font-size: 50px;
-			color: #fff;
-			
-		}
-		
-		.description {
-			font-size: 30px;
-			color: #fff;
-		}
-		
-		.container {
-			color: #fff;
-		}
-
-		#top-artists-long, #top-artists-med, #top-artists-short {
-			font-size: 20px;
-			color: #fff;
-		}
-		
-		@-webkit-keyframes fadeIn {
-			0% {
-				opacity: 0;
-			}
-			50% {
-				opacity: 0.5;
-			}
-			100% {
-				opacity: 1;
-			}
-		}
-
-		.animation {
-			-webkit-animation: fadeIn 1s linear;
-			-moz-animation: fadeIn 1s linear;
-			-o-animation: fadeIn 1s linear;
-			animation: fadeIn 1s linear;
-		}
-		
-		.nav-link:hover {
-			border-radius: 10px;
-			background-color: #5B00BA;
-			color: #fff;
-		}
-		
-		.nav-item {
-			margin-left: 3px;
-			margin-top: 5px;
-		}
-		
-		.active {
-			background-color: #5B00BA;
-		}
-		
-		@media screen and (max-width: 576px) {
-			#nav {
-				background-color: #222;
-				opacity: 0.85;
-			}
-		}
-		
-		
-
 
     </style>
   </head>
@@ -109,7 +46,7 @@
       </button>
       
 		<!--Logo/Brand link on right side of screen-->
-      <a class="navbar-brand" href="index.html"><i class="fa fa-bar-chart" aria-hidden="true"></i> Statify</a>
+      <a class="navbar-brand" href="index.html"><i class="fas fa-chart-bar" aria-hidden="true"></i> Statify</a>
 
 		<!--Expanded navbar-->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -338,5 +275,50 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    
+    <footer>
+    	<div class="container">
+			<div class="row justify-content-center py-2">
+				<div class = "col top-row"> 
+					<a href="index.html" class="footer-link">Home</a>
+				</div>
+				<div class="col top-row"> 
+					<a href="your_artists.html" class="footer-link">Your Artists</a>
+				</div>
+				<div class="col top-row">
+					<a href="your_tracks.html" class="footer-link">Your Tracks</a>
+				</div>
+				<div class="col top-row">
+					<a href="contact.html" class="footer-link">Contact</a>
+				</div>
+			</div>
+			
+			<div class="row justify-content-center py-2">
+				<div class="col-auto">
+					<a href="https://github.com/zafirhsn"><i class="fab fa-github fa-2x fa-fw logo-img"></i></a>
+					
+				</div>
+				<div class="col-auto">
+					<a href="https://www.linkedin.com/in/zafir-hasan-875376144/"><i class="fab fa-linkedin fa-2x fa-fw logo-img"></i></a>
+				</div>
+			</div>
+			
+			<div class="row justify-content-center py-2 bottom-row">
+				<div class="col-auto">
+					<span class="footer-text">&copy; Copyright 2018. All rights reserved.</span>
+				</div>
+				<div class="col-auto"> 
+					<a href="#" class="footer-link footer-text">Sitemap</a>
+				</div>
+				<div class="col-auto">
+					<span class="footer-text">Contact me: zh754@nyu.edu</span>
+				</div>			
+			</div>
+			
+		</div>
+    	
+    </footer>
+    
+    
   </body>
 </html>

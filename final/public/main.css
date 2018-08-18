@@ -26,10 +26,9 @@ footer {
   font-family: "Roboto", sans-serif;
   color: #FFF;
 }
-
 .footer-link:hover {
   text-decoration: none;
-  color: #fff;
+  color: white;
 }
 
 .footer-text {
@@ -43,11 +42,8 @@ footer {
   height: 30px;
   width: 30px;
 }
-
-/*
 .logo-img:hover {
-	color: black;
+  color: white;
 }
-*/
 
 /*# sourceMappingURL=main.css.map */
